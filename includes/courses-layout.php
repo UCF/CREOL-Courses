@@ -73,6 +73,7 @@ function courses_display( $semester, $instructor, $course, $level ) {
 				<?= $curr->Course . ' ' . $curr->Title ?>
 			</span><br>
 			<?= class_days( $curr->Mon, $curr->Tue, $curr->Wed, $curr->Thu, $curr->Fri ) . ' ' . $curr->StartTime . ' to ' . $curr->EndTime ?><br>
+			<?= location( $curr->Room ) ?><br>
 		</div>
 		<?php
 	}
