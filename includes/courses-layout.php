@@ -62,6 +62,7 @@ function courses_form_display() {
 			$level = $_POST['level'];
 
 			echo $semester . ' ' . $instructor . ' ' . $course . ' ' . $level;
+			courses_display( $semester, $instructor, $course, $level );
 		}
 		?>
 	</div>
@@ -73,24 +74,7 @@ function courses_display( $semester, $instructor, $course, $level ) {
 	$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/CourseInfo?Semester=' . $semester . '&Instructor=' . $instructor . '&CourseID=' . $course . '&Level=' . $level;
 	$course_info_arr = get_json( $url );
 
-	ob_start();
-	for($i = 0; $i < count($course_info_arr); $i++) {
-		$curr = $course_info_arr[$i];
-		?>
-		<div class="px-2 pb-3">
-			<span class="h-5 font-weight-bold letter-spacing-1">
-				<?= $curr->Course . ' ' . $curr->Title ?>
-			</span><br>
-			<?= class_days( $curr->Mon, $curr->Tue, $curr->Wed, $curr->Thu, $curr->Fri ) . ' ' . $curr->StartTime . ' to ' . $curr->EndTime ?><br>
-			<?= location( $curr->Room ) ?><br>
-			<a href="<?= instructor_url( $curr->FirstLastName ) ?>" target="_blank"><?= $curr->FirstLastName ?></a>
-			<?= $curr->isDetail ? ( '<a href="details/?courseid=' . $curr->CourseID . '">Details</a>' ) : '' ?>
-			<?= $curr->isSyllabus ? ( '<a href="syllabus/?scheduleid=' . $curr->CourseScheduleID . '&course=' . $curr->Course . '">Syllabus</a>' ) : '' ?>
-			<?= $curr->isWebCourse ? '<a href="https://webcourses.ucf.edu" target="_blank">Distance Learning</a>' : '' ?>
-			<?= $curr->isWebSite ? '<a href="' . $curr->URL . '" target="_blank">Website</a>' : '' ?><br><br>
-		</div>
-		<?php
+	foreach ( $course_info_arr as $curr ) {
+		echo $curr->Course . ' ' . $curr->Title . '<br>';
 	}
-	return ob_get_clean();
 }
-add_filter( 'courses_display', 'courses_display', 10, 4 );
