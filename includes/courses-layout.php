@@ -62,7 +62,7 @@ function courses_form_display() {
 			$level = $_POST['level'];
 
 			echo $semester . ' ' . $instructor . ' ' . $course . ' ' . $level;
-			courses_display( $semester, $instructor, $course, $level );
+			echo courses_display( $semester, $instructor, $course, $level );
 		}
 		?>
 	</div>
