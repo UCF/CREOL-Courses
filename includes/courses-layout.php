@@ -55,6 +55,7 @@ function courses_form_display() {
 		// } else {
 		// 	echo apply_filters( 'courses_display', semester_serial(), -1, 0, 2 );
 		// }
+
 		if ( isset( $_POST['semester'] ) && isset( $_POST['instructor'] ) && isset( $_POST['course'] ) && isset( $_POST['level'] ) ) {
 			$semester = $_POST['semester'];
 			$instructor = $_POST['instructor'];
@@ -75,7 +76,20 @@ function courses_display( $semester, $instructor, $course, $level ) {
 
 	ob_start();
 	foreach ( $course_info_arr as $curr ) {
-		echo $curr->Course . ' ' . $curr->Title . '<br>';
+		?>
+		<div class="px-2 pb-3">
+			<span class="h-5 font-weight-bold letter-spacing-1">
+				<?= $curr->Course . ' ' . $curr->Title ?>
+			</span><br>
+			<?= class_days( $curr->Mon, $curr->Tue, $curr->Wed, $curr->Thu, $curr->Fri ) . ' ' . $curr->StartTime . ' to ' . $curr->EndTime ?><br>
+			<?= location( $curr->Room ) ?><br>
+			<a href="<?= instructor_url( $curr->FirstLastName ) ?>" target="_blank"><?= $curr->FirstLastName ?></a>
+			<?= $curr->isDetail ? ( '<a href="details/?courseid=' . $curr->CourseID . '">Details</a>' ) : '' ?>
+			<?= $curr->isSyllabus ? ( '<a href="syllabus/?scheduleid=' . $curr->CourseScheduleID . '&course=' . $curr->Course . '">Syllabus</a>' ) : '' ?>
+			<?= $curr->isWebCourse ? '<a href="https://webcourses.ucf.edu" target="_blank">Distance Learning</a>' : '' ?>
+			<?= $curr->isWebSite ? '<a href="' . $curr->URL . '" target="_blank">Website</a>' : '' ?><br><br>
+		</div>
+		<?php
 	}
 
 	return ob_get_clean();
