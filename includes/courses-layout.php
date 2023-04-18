@@ -74,7 +74,6 @@ function courses_display( $semester, $instructor, $course, $level ) {
 			</span><br>
 			<?= class_days( $curr->Mon, $curr->Tue, $curr->Wed, $curr->Thu, $curr->Fri ) . ' ' . $curr->StartTime . ' to ' . $curr->EndTime ?><br>
 			<?= location( $curr->Room ) ?><br>
-			<a href="<?= instructor_url( $curr->FirstLastName ) ?>" target="_blank"><?= $curr->FirstLastName ?></a>
 		</div>
 		<?php
 	}
