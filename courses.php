@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Courses
-Plugin URI: http://na/
+Plugin URI: https://github.com/UCF/CREOL-Courses/tree/dev
 Description: Retrieves course information from database and displays as a list.
 Author: Claire Daugherty
 Version: 1.0
-Author URI: http://na/
+Author URI: https://github.com/claire-md
 */
 
 if ( ! defined( 'WPINC' ) ) {
