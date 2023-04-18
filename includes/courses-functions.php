@@ -18,7 +18,7 @@ function class_days( $mon, $tue, $wed, $thu, $fri ) {
 // Adds "CREOL" to room number.
 function location( $room ) {
 	if ( $room ) {
-		return ( str_starts_with( $room, 'A' ) || is_numeric( $room ) ) ? ( 'CREOL ' . $room ) : $room;
+		return ( is_numeric( $room ) ) ? ( 'CREOL ' . $room ) : $room;
 	}
 }
 
