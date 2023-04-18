@@ -74,7 +74,10 @@ function courses_display( $semester, $instructor, $course, $level ) {
 	$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/CourseInfo?Semester=' . $semester . '&Instructor=' . $instructor . '&CourseID=' . $course . '&Level=' . $level;
 	$course_info_arr = get_json( $url );
 
+	ob_start();
 	foreach ( $course_info_arr as $curr ) {
 		echo $curr->Course . ' ' . $curr->Title . '<br>';
 	}
+
+	return ob_get_clean();
 }
