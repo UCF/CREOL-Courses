@@ -55,6 +55,14 @@ function courses_form_display() {
 		// } else {
 		// 	echo apply_filters( 'courses_display', semester_serial(), -1, 0, 2 );
 		// }
+		if ( isset( $_POST['semester'] ) && isset( $_POST['instructor'] ) && isset( $_POST['course'] ) && isset( $_POST['level'] ) ) {
+			$semester = $_POST['semester'];
+			$instructor = $_POST['instructor'];
+			$course = $_POST['course'];
+			$level = $_POST['level'];
+
+			echo $semester . ' ' . $instructor . ' ' . $course . ' ' . $level;
+		}
 		?>
 	</div>
 	<?php
