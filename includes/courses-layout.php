@@ -62,7 +62,7 @@ function courses_form_display() {
 			$level = $_POST['level'];
 
 			echo $semester . ' ' . $instructor . ' ' . $course . ' ' . $level;
-			echo courses_display( $semester, $instructor, $course, $level );
+			echo apply_filters( 'courses_display', $semester, $instructor, $course, $level );
 		}
 		?>
 	</div>
@@ -81,3 +81,4 @@ function courses_display( $semester, $instructor, $course, $level ) {
 
 	return ob_get_clean();
 }
+add_filter( 'courses_display', 'courses_display', 10, 4 );
