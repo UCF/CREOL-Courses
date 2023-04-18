@@ -9,7 +9,7 @@ function get_json( $url ) {
 	$expiration = 3600; // Seconds in an hour.
 
 	if ( ! $items ) {
-		$request = wp_remote_get( $url, array( 'sslverify' => false ) );
+		$request = wp_remote_get( $url );
 
 		if ( is_wp_error( $request ) ) {
 			return false;
