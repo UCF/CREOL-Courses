@@ -40,21 +40,21 @@ function courses_form_display() {
 	</div>
 	<div>
 		<?php
-		if ( isset( $_POST['semester'] ) && isset( $_POST['instructor'] ) && isset( $_POST['course'] ) && isset( $_POST['level'] ) ) {
-			$semester = $_POST['semester'];
-			$instructor = $_POST['instructor'];
-			$course = $_POST['course'];
-			$level = $_POST['level'];
-			if ( $semester == 0 && $instructor == -1 && $course == 0 ) {
-				echo 'Select a semester, instructor, or course';
-			} else {
-				if ( has_filter( 'courses_display' ) ) {
-					echo apply_filters( 'courses_display', $semester, $instructor, $course, $level );
-				}
-			}
-		} else {
-			echo apply_filters( 'courses_display', semester_serial(), -1, 0, 2 );
-		}
+		// if ( isset( $_POST['semester'] ) && isset( $_POST['instructor'] ) && isset( $_POST['course'] ) && isset( $_POST['level'] ) ) {
+		// 	$semester = $_POST['semester'];
+		// 	$instructor = $_POST['instructor'];
+		// 	$course = $_POST['course'];
+		// 	$level = $_POST['level'];
+		// 	if ( $semester == 0 && $instructor == -1 && $course == 0 ) {
+		// 		echo 'Select a semester, instructor, or course';
+		// 	} else {
+		// 		if ( has_filter( 'courses_display' ) ) {
+		// 			echo apply_filters( 'courses_display', $semester, $instructor, $course, $level );
+		// 		}
+		// 	}
+		// } else {
+		// 	echo apply_filters( 'courses_display', semester_serial(), -1, 0, 2 );
+		// }
 		?>
 	</div>
 	<?php
@@ -64,7 +64,7 @@ function courses_form_display() {
 function courses_display( $semester, $instructor, $course, $level ) {
 	$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/CourseInfo?Semester=' . $semester . '&Instructor=' . $instructor . '&CourseID=' . $course . '&Level=' . $level;
 	$course_info_arr = get_json( $url );
-	
+
 	ob_start();
 	for($i = 0; $i < count($course_info_arr); $i++) {
 		$curr = $course_info_arr[$i];
