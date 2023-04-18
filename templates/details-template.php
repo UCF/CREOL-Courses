@@ -3,7 +3,7 @@
 Template Name: Course Details Template
 */
 function details_page( $course_id ) {
-	$url = 'https://www2.qa.creol.ucf.edu/CoursesJson.asmx/Details?CourseID=' . $course_id;
+	$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/CoursesJson.asmx/Details?CourseID=' . $course_id;
 	$details_arr = get_json( $url );
 
 	echo $details_arr[0]->CourseName . '<br>';
