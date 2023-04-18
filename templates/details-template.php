@@ -5,6 +5,7 @@ Template Name: Course Details Template
 function details_page( $course_id ) {
 	$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/CoursesJson.asmx/Details?CourseID=' . $course_id;
 	$details_arr = get_json( $url );
+	echo var_dump($details_arr);
 
 	echo $details_arr[0]->CourseName . '<br>';
 	echo $details_arr[0]->Description . '<br>';
@@ -16,7 +17,6 @@ the_post(); ?>
 <article class="<?php echo $post->post_status; ?> post-list-item">
 	<?php
 	if ( isset( $_GET['courseid'] ) ) {
-		echo $_GET['courseid'];
 		details_page( $_GET['courseid'] );
 	} else {
 		the_content();
