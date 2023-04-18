@@ -15,13 +15,6 @@ function class_days( $mon, $tue, $wed, $thu, $fri ) {
 	}
 }
 
-// Adds "CREOL" to room number.
-function location( $room ) {
-	if ( $room ) {
-		return ( is_numeric( $room ) ) ? ( 'CREOL ' . $room ) : $room;
-	}
-}
-
 // Returns the instructor's URL by taking in their first and last name.
 function instructor_url( $name ) {
 	if ( $name ) {
