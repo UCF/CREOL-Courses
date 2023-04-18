@@ -16,6 +16,7 @@ the_post(); ?>
 <article class="<?php echo $post->post_status; ?> post-list-item">
 	<?php
 	if ( isset( $_GET['courseid'] ) ) {
+		echo $_GET['courseid'];
 		details_page( $_GET['courseid'] );
 	} else {
 		the_content();
