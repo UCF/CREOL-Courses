@@ -64,9 +64,10 @@ function courses_form_display() {
 function courses_display( $semester, $instructor, $course, $level ) {
 	$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/CourseInfo?Semester=' . $semester . '&Instructor=' . $instructor . '&CourseID=' . $course . '&Level=' . $level;
 	$course_info_arr = get_json( $url );
-	echo var_dump($course_info_arr);
+	
 	ob_start();
-	foreach ( $course_info_arr as $curr ) {
+	for($i = 0; $i < count($course_info_arr); $i++) {
+		$curr = $course_info_arr[$i];
 		?>
 		<div class="px-2 pb-3">
 			<span class="h-5 font-weight-bold letter-spacing-1">
