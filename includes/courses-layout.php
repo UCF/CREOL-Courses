@@ -61,7 +61,7 @@ function courses_form_display() {
 			$course = $_POST['course'];
 			$level = $_POST['level'];
 
-			apply_filters( 'courses_display', $semester, $instructor, $course, $level );
+			echo apply_filters( 'courses_display', $semester, $instructor, $course, $level );
 		}
 		?>
 	</div>
