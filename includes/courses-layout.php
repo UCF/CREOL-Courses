@@ -78,7 +78,7 @@ function courses_display( $semester, $instructor, $course, $level ) {
 			<?= $curr->isDetail ? ( '<a href="details/?courseid=' . $curr->CourseID . '">Details</a>' ) : '' ?>
 			<?= $curr->isSyllabus ? ( '<a href="syllabus/?scheduleid=' . $curr->CourseScheduleID . '&course=' . $curr->Course . '">Syllabus</a>' ) : '' ?>
 			<?= $curr->isWebCourse ? '<a href="https://webcourses.ucf.edu" target="_blank">Distance Learning</a>' : '' ?>
-			<?= $curr->isWebSite ? '<a href="' . $curr->URL . '" target="_blank">Website</a>' : '' ?><br><br>
+			<?= $curr->isWebSite ? '<a href="' . $curr->URL . '" target="_blank">Website</a>' : '' ?><br>
 		</div>
 		<?php
 	}
