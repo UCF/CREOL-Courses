@@ -7,6 +7,16 @@ Author: Claire Daugherty
 Version: 1.0
 Author URI: http://na/
 */
-include_once 'includes/courses-functions.php';
 
-add_shortcode( 'courses', 'callback' );
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
+require_once 'includes/courses-feed.php';
+require_once 'includes/courses-layout.php';
+require_once 'includes/courses-functions.php';
+require_once 'templates/template-functions.php';
+
+add_shortcode( 'courses', 'courses_form_display' );
+add_filter( 'theme_page_templates', 'add_page_template' );
+add_filter( 'template_include', 'change_page_template', 99 );
