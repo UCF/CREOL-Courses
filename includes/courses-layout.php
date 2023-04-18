@@ -4,9 +4,9 @@
  **/
 
 function courses_form_display() {
-	$semester_arr = get_json( 'https://www2.qa.creol.ucf.edu/CoursesJson.asmx/SemesterList' );
-	$instructor_arr = get_json( 'https://www2.qa.creol.ucf.edu/CoursesJson.asmx/InstructorList' );
-	$course_arr = get_json( 'https://www2.qa.creol.ucf.edu/CoursesJson.asmx/CourseList' );
+	$semester_arr = get_json( 'https://api.creol.ucf.edu/CoursesJson.asmx/SemesterList' );
+	$instructor_arr = get_json( 'https://api.creol.ucf.edu/CoursesJson.asmx/InstructorList' );
+	$course_arr = get_json( 'https://api.creol.ucf.edu/CoursesJson.asmx/CourseList' );
 
 	ob_start();
 	?>
@@ -62,7 +62,7 @@ function courses_form_display() {
 }
 
 function courses_display( $semester, $instructor, $course, $level ) {
-	$url = 'https://www2.qa.creol.ucf.edu/CoursesJson.asmx/CourseInfo?Semester=' . $semester . '&Instructor=' . $instructor . '&CourseID=' . $course . '&Level=' . $level;
+	$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/CourseInfo?Semester=' . $semester . '&Instructor=' . $instructor . '&CourseID=' . $course . '&Level=' . $level;
 	$course_info_arr = get_json( $url );
 
 	ob_start();
