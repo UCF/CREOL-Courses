@@ -31,7 +31,8 @@ function courses_form_display() {
 						<select name="instructor" id="instructor" class="form-control">
 							<option value=-1>All</option>
 							<?php for ( $i = 0; $i < count( $instructor_arr ); $i++ ) : ?>
-								<option value="<?= $instructor_arr[ $i ]->PeopleID ?>" selected="<?= ( $_POST['instructor'] == $instructor_arr[ $i ]->PeopleID ? 'true' : 'false') ?>">
+								<option value="<?= $instructor_arr[ $i ]->PeopleID ?>" 
+								selected="<?= ( isset($_POST['instructor']) && $_POST['instructor'] == $instructor_arr[ $i ]->PeopleID ? 'true' : 'false') ?>">
 									<?= $instructor_arr[ $i ]->LastFirstName ?>
 								</option>
 							<?php endfor; ?>
