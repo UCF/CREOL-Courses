@@ -76,7 +76,7 @@ function courses_form_display() {
 				}
 				?>
 				<script>
-					document.getElementById("semester").selectedIndex = 2;
+					document.getElementById("semester").selectedIndex = 1;
 				</script>
 			</div>
 		</div>
