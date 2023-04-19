@@ -73,11 +73,13 @@ function courses_form_display() {
 					}
 				} else {
 					echo apply_filters( 'courses_display', semester_serial(), -1, 0, 2 );
+				?>
+					<script>
+						document.getElementById("semester").selectedIndex = 1;
+					</script>
+				<?php
 				}
 				?>
-				<script>
-					document.getElementById("semester").selectedIndex = 1;
-				</script>
 			</div>
 		</div>
 	</div>
