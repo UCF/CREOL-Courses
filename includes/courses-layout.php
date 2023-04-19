@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Handles the form and the output.
  **/
 
 function courses_form_display() {
@@ -10,35 +10,42 @@ function courses_form_display() {
 
 	ob_start();
 	?>
-	<div>
-		<form method="post" name="form">
-			<select name="semester">
-				<option value=0>All</option>
-				<?php for ( $i = 0; $i < count( $semester_arr ); $i++ ) : ?>
-					<option value="<?= $semester_arr[ $i ]->SemesterSerial ?>"><?= $semester_arr[ $i ]->SemesterTxt ?></option>
-				<?php endfor; ?>
-			</select>
-			<select name="instructor">
-				<option value=-1>All</option>
-				<?php for ( $i = 0; $i < count( $instructor_arr ); $i++ ) : ?>
-					<option value="<?= $instructor_arr[ $i ]->PeopleID ?>"><?= $instructor_arr[ $i ]->LastFirstName ?></option>
-				<?php endfor; ?>
-			</select>
-			<select name="course">
-				<option value=0>All</option>
-				<?php for ( $i = 0; $i < count( $course_arr ); $i++ ) : ?>
-					<option value="<?= $course_arr[ $i ]->CourseID ?>"><?= $course_arr[ $i ]->FullCourseName ?></option>
-				<?php endfor; ?>
-			</select>
-			<select id="level" name="level">
-				<option value=2>All</option>
-				<option value=1>Undergraduate</option>
-				<option value=0>Graduate</option>
-			</select>
-			<input name="submit" type="submit">
-		</form>
+	<div class="container">
+		<div class="row">
+			<div class="col-3">
+				<form method="post" name="form">
+					<div class="form-group">
+						<label for="semester">Semester</label>
+						<select name="semester" id="semester" class="form-control">
+							<option value=0>All</option>
+							<?php for ( $i = 0; $i < count( $semester_arr ); $i++ ) : ?>
+								<option value="<?= $semester_arr[ $i ]->SemesterSerial ?>"><?= $semester_arr[ $i ]->SemesterTxt ?></option>
+							<?php endfor; ?>
+						</select>
+					</div>
+					<select name="instructor">
+						<option value=-1>All</option>
+						<?php for ( $i = 0; $i < count( $instructor_arr ); $i++ ) : ?>
+							<option value="<?= $instructor_arr[ $i ]->PeopleID ?>"><?= $instructor_arr[ $i ]->LastFirstName ?></option>
+						<?php endfor; ?>
+					</select>
+					<select name="course">
+						<option value=0>All</option>
+						<?php for ( $i = 0; $i < count( $course_arr ); $i++ ) : ?>
+							<option value="<?= $course_arr[ $i ]->CourseID ?>"><?= $course_arr[ $i ]->FullCourseName ?></option>
+						<?php endfor; ?>
+					</select>
+					<select id="level" name="level">
+						<option value=2>All</option>
+						<option value=1>Undergraduate</option>
+						<option value=0>Graduate</option>
+					</select>
+					<input name="submit" type="submit">
+				</form>
+			</div>
+		</div>
 	</div>
-	<div>
+	<div class="col">
 		<?php
 		if ( isset( $_POST['semester'] ) && isset( $_POST['instructor'] ) && isset( $_POST['course'] ) && isset( $_POST['level'] ) ) {
 			$semester = $_POST['semester'];
