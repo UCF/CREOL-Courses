@@ -5,7 +5,11 @@
 
 // Returns current semester serial.
 function semester_serial() {
-	return ( date( 'Y' ) - 1980 ) * 3 + intdiv( ( date( 'm' ) - 1 ), 4 );
+	if ( ( intdiv( ( date( 'm' ) - 1 ), 4 ) ) == 1 ){
+		return ( date( 'Y' ) - 1980 ) * 3;
+	} else {
+		return ( date( 'Y' ) - 1980 ) * 3 + intdiv( ( date( 'm' ) - 1 ), 4 );
+	}
 }
 
 // Formats the class days.

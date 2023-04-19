@@ -18,7 +18,7 @@ the_post(); ?>
 	if ( isset( $_GET['courseid'] ) ) {
 		details_page( $_GET['courseid'] );
 	} else {
-		header( "Location: https://creolcmsdev.smca.ucf.edu/courses/" );
+		the_content();
 	}
 	?>
 </article>
