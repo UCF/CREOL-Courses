@@ -72,11 +72,12 @@ function courses_form_display() {
 						}
 					}
 				} else {
-					$_POST['semester'] = semester_serial();
-					echo $_POST['semester'];
 					echo apply_filters( 'courses_display', semester_serial(), -1, 0, 2 );
 				}
 				?>
+				<script>
+					document.getElementById("semester").selectedIndex = 2;
+				</script>
 			</div>
 		</div>
 	</div>
