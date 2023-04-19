@@ -19,7 +19,7 @@ function courses_form_display() {
 						<select name="semester" id="semester" class="form-control">
 							<option value=0>All</option>
 							<?php for ( $i = 0; $i < count( $semester_arr ); $i++ ) : ?>
-								<option value="<?= $semester_arr[ $i ]->SemesterSerial ?>"><?= $semester_arr[ $i ]->SemesterTxt ?></option>
+								<option value="<?= $semester_arr[ $i ]->SemesterSerial ?>" <?= ( isset($_POST['semester']) && $_POST['semester'] == $semester_arr[ $i ]->SemesterSerial ) ? 'selected=true' : '' ?> ><?= $semester_arr[ $i ]->SemesterTxt ?></option>
 							<?php endfor; ?>
 						</select>
 					</div>
