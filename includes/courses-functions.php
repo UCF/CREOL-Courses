@@ -5,8 +5,7 @@
 
 // Returns current semester serial.
 function semester_serial() {
-	echo ( date( 'Y' ) - 1980 ) * 3;
-	echo ( date( 'Y' ) - 1980 ) * 3 + intdiv( ( date( 'm' ) - 1 ), 4 );
+	echo date( 'Y' ) . ' ' . date( 'm' );
 	if ( ( ( date( 'm' ) - 1 ) / 4 ) == 1 ){
 		return ( date( 'Y' ) - 1980 ) * 3;
 	} else {
