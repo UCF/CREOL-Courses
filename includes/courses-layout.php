@@ -72,6 +72,7 @@ function courses_form_display() {
 						}
 					}
 				} else {
+					$_POST['semester'] = semester_serial();
 					echo apply_filters( 'courses_display', semester_serial(), -1, 0, 2 );
 				}
 				?>
