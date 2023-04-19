@@ -20,7 +20,7 @@ function courses_form_display() {
 							<option value=0>All</option>
 							<?php for ( $i = 0; $i < count( $semester_arr ); $i++ ) : ?>
 								<option value="<?= $semester_arr[ $i ]->SemesterSerial ?>" 
-								<?= ( isset($_POST['semester']) && $_POST['semester'] == $semester_arr[ $i ]->SemesterSerial ) ? 'selected=true' : '' ?> >
+								<?= ( isset($_POST['semester']) && $_POST['semester'] == $semester_arr[ $i ]->SemesterSerial ) ? 'selected=true' : '' ?>>
 									<?= $semester_arr[ $i ]->SemesterTxt ?>
 								</option>
 							<?php endfor; ?>
@@ -31,7 +31,8 @@ function courses_form_display() {
 						<select name="instructor" id="instructor" class="form-control">
 							<option value=-1>All</option>
 							<?php for ( $i = 0; $i < count( $instructor_arr ); $i++ ) : ?>
-								<option value="<?= $instructor_arr[ $i ]->PeopleID ?>">
+								<option value="<?= $instructor_arr[ $i ]->PeopleID ?>"
+								<?= ( isset($_POST['instructor']) && $_POST['instructor'] == $instructor_arr[ $i ]->PeopleID ) ? 'selected=true' : '' ?>>
 									<?= $instructor_arr[ $i ]->LastFirstName ?>
 								</option>
 							<?php endfor; ?>
@@ -42,16 +43,19 @@ function courses_form_display() {
 						<select name="course" id="course" class="form-control">
 							<option value=0>All</option>
 							<?php for ( $i = 0; $i < count( $course_arr ); $i++ ) : ?>
-								<option value="<?= $course_arr[ $i ]->CourseID ?>"><?= $course_arr[ $i ]->FullCourseName ?></option>
+								<option value="<?= $course_arr[ $i ]->CourseID ?>"
+								<?= ( isset($_POST['course']) && $_POST['course'] == $course_arr[ $i ]->CourseID ) ? 'selected=true' : '' ?>>
+									<?= $course_arr[ $i ]->FullCourseName ?>
+								</option>
 							<?php endfor; ?>
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="level">Level</label>
 						<select id="level" name="level" class="form-control">
-							<option value=2 <?= ( isset($_GET['level']) && $_GET['level'] == 2 ) ? 'selected=true' : '' ?> >All</option>
-							<option value=1 <?= ( isset($_POST['level']) && $_POST['level'] == 1 ) ? 'selected=true' : '' ?> >Undergraduate</option>
-							<option value=0>Graduate</option>
+							<option value=2 <?= ( isset($_POST['level']) && $_POST['level'] == 2 ) ? 'selected=true' : '' ?>>All</option>
+							<option value=1 <?= ( isset($_POST['level']) && $_POST['level'] == 1 ) ? 'selected=true' : '' ?>>Undergraduate</option>
+							<option value=0 <?= ( isset($_POST['level']) && $_POST['level'] == 0 ) ? 'selected=true' : '' ?>>Graduate</option>
 						</select>
 					</div>
 					<button type="submit" name="submit" class="btn btn-primary">Submit</button>
