@@ -7,7 +7,8 @@ function details_page( $course_id, $post ) {
 	$details_arr = get_json( $url );
 	$post->post_title = $details_arr[0]->CourseName;
 ?>
-<div class="p-3">
+<div class="container m-5">
+	<?= $post->post_title ?>
 	<?= $details_arr[0]->Description ?>
 	<br>
 	<?= $details_arr[0]->Details ?>
