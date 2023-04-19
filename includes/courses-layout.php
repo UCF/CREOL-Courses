@@ -58,16 +58,17 @@ function courses_form_display() {
 							<option value=0 <?= ( isset($_POST['level']) && $_POST['level'] == 0 ) ? 'selected=true' : '' ?>>Graduate</option>
 						</select>
 					</div>
-					<div class="form-check form-check-inline">
+					<div class="form-check">
 						<label class="form-check-label">
 							<input class="form-check-input" type="checkbox" id="undergrad" value=1> Undergraduate
 						</label>
 					</div>
-					<div class="form-check form-check-inline">
+					<div class="form-check">
 						<label class="form-check-label">
 							<input class="form-check-input" type="checkbox" id="grad" value=0> Graduate
 						</label>
 					</div>
+					<br>
 					<button type="submit" name="submit" class="btn btn-primary">Submit</button>
 				</form>
 			</div>
