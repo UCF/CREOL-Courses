@@ -19,7 +19,10 @@ function courses_form_display() {
 						<select name="semester" id="semester" class="form-control">
 							<option value=0>All</option>
 							<?php for ( $i = 0; $i < count( $semester_arr ); $i++ ) : ?>
-								<option value="<?= $semester_arr[ $i ]->SemesterSerial ?>" <?= ( isset($_POST['semester']) && $_POST['semester'] == $semester_arr[ $i ]->SemesterSerial ) ? 'selected=true' : '' ?> ><?= $semester_arr[ $i ]->SemesterTxt ?></option>
+								<option value="<?= $semester_arr[ $i ]->SemesterSerial ?>" 
+								<?= ( isset($_POST['semester']) && $_POST['semester'] == $semester_arr[ $i ]->SemesterSerial ) ? 'selected=true' : '' ?> >
+									<?= $semester_arr[ $i ]->SemesterTxt ?>
+								</option>
 							<?php endfor; ?>
 						</select>
 					</div>
@@ -28,7 +31,9 @@ function courses_form_display() {
 						<select name="instructor" id="instructor" class="form-control">
 							<option value=-1>All</option>
 							<?php for ( $i = 0; $i < count( $instructor_arr ); $i++ ) : ?>
-								<option value="<?= $instructor_arr[ $i ]->PeopleID ?>"><?= $instructor_arr[ $i ]->LastFirstName ?></option>
+								<option value="<?= $instructor_arr[ $i ]->PeopleID ?>" selected="<?= ( $_POST['instructor'] == $instructor_arr[ $i ]->PeopleID ? 'true' : 'false') ?>">
+									<?= $instructor_arr[ $i ]->LastFirstName ?>
+								</option>
 							<?php endfor; ?>
 						</select>
 					</div>
