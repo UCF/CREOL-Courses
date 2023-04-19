@@ -3,7 +3,7 @@
 Template Name: Course Syllabus Template
 */
 function syllabus_pdf( $schedule_id, $course ) {
-	$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/Syllabus?CourseScheduleID=' . $schedule_id;
+	$url = 'https://api.creol.ucf.edu/ViewSyllabus.aspx?CourseScheduleID=' . $schedule_id;
 	$content = wp_remote_get( $url );
 	if ( is_wp_error( $content ) ) {
 		echo 'Error';
