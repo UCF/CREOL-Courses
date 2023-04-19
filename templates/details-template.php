@@ -6,11 +6,11 @@ function details_page( $course_id ) {
 	$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/Details?CourseID=' . $course_id;
 	$details_arr = get_json( $url );
 ?>
+<<<<<<< HEAD
 <div class="container">
 	<h1 class="mt-3 mt-sm-4 mt-md-5 mb-3"><?= $details_arr[0]->CourseName ?></h1>
 </div>
 <div style="margin: 5% 10% 5% 10%">
-	<h1>
 	<?= $details_arr[0]->Description ?>
 	<br>
 	<?= $details_arr[0]->Details ?>
