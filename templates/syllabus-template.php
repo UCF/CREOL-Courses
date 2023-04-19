@@ -10,7 +10,7 @@ function syllabus_pdf( $schedule_id, $course ) {
 		return false;
 	}
 
-	// header( 'Content-Type: application/pdf' );
+	header( 'Content-Type: application/pdf' );
 	// header( 'Content-disposition: attachment; filename=' . $course . '-syllabus.pdf' );
 	echo wp_remote_retrieve_body( $content );
 }
