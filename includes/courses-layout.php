@@ -44,7 +44,7 @@ function courses_form_display() {
 					<div class="form-group">
 						<label for="level">Level</label>
 						<select id="level" name="level" class="form-control">
-							<option value=2>All</option>
+							<option value=2 <?= ( isset($_GET['level']) && $_GET['level'] == 2 ) ? 'selected=true' : '' ?> >All</option>
 							<option value=1>Undergraduate</option>
 							<option value=0>Graduate</option>
 						</select>
