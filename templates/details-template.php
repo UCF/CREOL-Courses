@@ -8,10 +8,7 @@ function details_page( $course_id ) {
 ?>
 <div class="container">
 	<h1 class="mt-3 mt-sm-4 mt-md-5 mb-3"><?= $details_arr[0]->CourseName ?></h1>
-	<br><br>
 	<?= $details_arr[0]->Description ?>
-</div>
-<div style="margin: 5% 10% 5% 10%">
 	<?= $details_arr[0]->Details ?>
 </div>
 <?php
