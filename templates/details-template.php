@@ -2,12 +2,15 @@
 /*
 Template Name: Course Details Template
 */
-function details_page( $course_id, $post ) {
+function details_page( $course_id ) {
 	$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/Details?CourseID=' . $course_id;
 	$details_arr = get_json( $url );
-	$post->post_title = $details_arr[0]->CourseName;
 ?>
-<div class="p-3">
+<div class="container">
+	<h1 class="mt-3 mt-sm-4 mt-md-5 mb-3"><?= $details_arr[0]->CourseName ?></h1>
+</div>
+<div style="margin: 5% 10% 5% 10%">
+	<h1>
 	<?= $details_arr[0]->Description ?>
 	<br>
 	<?= $details_arr[0]->Details ?>
@@ -21,7 +24,7 @@ the_post(); ?>
 <article class="<?php echo $post->post_status; ?> post-list-item">
 	<?php
 	if ( isset( $_GET['courseid'] ) ) {
-		details_page( $_GET['courseid'], $post );
+		details_page( $_GET['courseid'] );
 	} else {
 		the_content();
 	}
