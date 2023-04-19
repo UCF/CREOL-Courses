@@ -50,22 +50,22 @@ function courses_form_display() {
 							<?php endfor; ?>
 						</select>
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label for="level">Level</label>
 						<select id="level" name="level" class="form-control">
 							<option value=2 <?= ( isset($_POST['level']) && $_POST['level'] == 2 ) ? 'selected=true' : '' ?>>All</option>
 							<option value=1 <?= ( isset($_POST['level']) && $_POST['level'] == 1 ) ? 'selected=true' : '' ?>>Undergraduate</option>
 							<option value=0 <?= ( isset($_POST['level']) && $_POST['level'] == 0 ) ? 'selected=true' : '' ?>>Graduate</option>
 						</select>
-					</div>
+					</div> -->
 					<div class="form-check">
 						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" id="undergrad" value=1> Undergraduate
+							<input class="form-check-input" type="checkbox" name="undergrad" value=1> Undergraduate
 						</label>
 					</div>
 					<div class="form-check">
 						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" id="grad" value=0> Graduate
+							<input class="form-check-input" type="checkbox" name="grad" value=0> Graduate
 						</label>
 					</div>
 					<br>
@@ -74,11 +74,12 @@ function courses_form_display() {
 			</div>
 			<div class="col">
 				<?php
-				if ( isset( $_POST['semester'] ) && isset( $_POST['instructor'] ) && isset( $_POST['course'] ) && isset( $_POST['level'] ) ) {
+				if ( isset( $_POST['semester'] ) && isset( $_POST['instructor'] ) && isset( $_POST['course'] ) && ( isset( $_POST['undergrad'] ) || isset( $_POST['grad'] ) ) ) {
 					$semester = $_POST['semester'];
 					$instructor = $_POST['instructor'];
 					$course = $_POST['course'];
-					$level = $_POST['level'];
+					$level = get_level( $_POST['undergrad'], $_POST['grad'] );
+
 					if ( $semester == 0 && $instructor == -1 && $course == 0 ) {
 						echo 'Select a semester, instructor, or course';
 					} else {
