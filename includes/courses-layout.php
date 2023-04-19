@@ -67,6 +67,7 @@ function courses_form_display() {
 						}
 					}
 				} else {
+					echo semester_serial();
 					echo apply_filters( 'courses_display', semester_serial(), -1, 0, 2 );
 				}
 				?>
