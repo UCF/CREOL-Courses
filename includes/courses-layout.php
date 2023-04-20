@@ -13,10 +13,6 @@ function courses_form_display() {
 	<div class="container">
 		<div class="row">
 			<div class="col-3">
-				<a class="btn btn-primary" href="https://www2.creol.ucf.edu/Academics/Courses/TimeTable.aspx?Semester=<?= $semester_arr[0]->SemesterSerial ?>" target="_blank">
-					Timetable View
-				</a>
-				<br><br>
 				<form method="post" name="form">
 					<div class="form-group">
 						<label for="semester">Semester</label>
@@ -71,6 +67,10 @@ function courses_form_display() {
 					<br>
 					<button type="submit" name="submit" class="btn btn-primary">Submit</button>
 				</form>
+				<br><br>
+				<a class="btn btn-primary" href="https://www2.creol.ucf.edu/Academics/Courses/TimeTable.aspx?Semester=<?= $semester_arr[0]->SemesterSerial ?>" target="_blank">
+					Timetable View
+				</a>
 			</div>
 			<div class="col">
 				<?php
