@@ -87,7 +87,10 @@ function courses_form_display() {
 					echo apply_filters( 'courses_display', semester_serial(), -1, 0, 2 );
 				?>
 					<script>
+						// Sets the form to the correct information.
 						document.getElementById("semester").selectedIndex = 1;
+						document.getElementById("instructor").selectedIndex = 0;
+						document.getElementById("course").selectedIndex = 0;
 						document.getElementById("undergrad").checked = true;
 						document.getElementById("grad").checked = true;
 					</script>
