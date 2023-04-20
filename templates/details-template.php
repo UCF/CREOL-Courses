@@ -9,18 +9,22 @@ function details_page( $course_id ) {
 	$syllabus_arr = get_json( $syllabus_url );
 ?>
 <div class="container">
-	<h1 class="mt-3 mt-sm-4 mt-md-5 mb-3"><?= $details_arr[0]->CourseName ?></h1>
+	<h1 class="mt-3 mt-sm-4 mt-md-5 mb-3"><?= $details_arr[0]->Course . '- ' . $details_arr[0]->Title ?></h1>
 	<div class="row">
-		<div class="col">
-			<?php foreach ( $syllabus_arr as $curr ) : ?>
-				<a href="" target="_blank"><?= $curr->Semester ?></a><br>
-			<?php endforeach; ?>
-		</div>
 		<div class="col">
 			Description: <?= $details_arr[0]->Description ?>
 			<div class="mt-4 mb-5 pb-sm-4">
 				<?= $details_arr[0]->Details ?>
 			</div>
+		</div>
+		<div class="col-3">
+			<ul class="list-group list-group-flush">
+				<?php foreach ( $syllabus_arr as $curr ) : ?>
+				<li class="list-group-item">
+					<a href="/syllabus/?scheduleid=<?= $curr->CourseScheduleID ?>&course=<?= trim( $details_arr[0]->Course ) ?>" target="_blank"><?= $curr->Semester ?></a>
+				</li>
+				<?php endforeach; ?>
+			</ul>
 		</div>
 	</div>
 </div>
