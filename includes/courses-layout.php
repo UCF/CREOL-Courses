@@ -13,12 +13,10 @@ function courses_form_display() {
 	<div class="container">
 		<div class="row">
 			<div class="col-3">
-				<?php if ( isset($_POST['semester']) && $_POST['semester'] != 0 ) : ?>
-				<a class="btn btn-primary btn-sm" href="https://www2.creol.ucf.edu/Academics/Courses/TimeTable.aspx?Semester=<?= $_POST['semester'] ?>" target="_blank">
+				<a class="btn btn-primary btn-sm" href="https://www2.creol.ucf.edu/Academics/Courses/TimeTable.aspx?Semester=<?= $semester_arr[0]->SemesterSerial ?>" target="_blank">
 					Timetable View
 				</a>
-				<br>
-				<?php endif; ?>
+				<br><br>
 				<form method="post" name="form">
 					<div class="form-group">
 						<label for="semester">Semester</label>
