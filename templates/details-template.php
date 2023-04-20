@@ -7,8 +7,6 @@ function details_page( $course_id ) {
 	$syllabus_url = 'https://api.creol.ucf.edu/CoursesJson.asmx/SyllabusList?CourseID=' . $course_id;
 	$details_arr = get_json( $details_url );
 	$syllabus_arr = get_json( $syllabus_url );
-
-	echo var_dump( $details_arr );
 ?>
 <div class="container">
 	<h1 class="mt-3 mt-sm-4 mt-md-5 mb-3"><?= $details_arr[0]->Course . '- ' . $details_arr[0]->Title ?></h1>
