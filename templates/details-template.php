@@ -12,7 +12,7 @@ function details_page( $course_id ) {
 	<h1 class="mt-3 mt-sm-4 mt-md-5 mb-3"><?= $details_arr[0]->Course . '- ' . $details_arr[0]->Title ?></h1>
 	<div class="row">
 		<div class="col">
-			Description: <?= $details_arr[0]->Description ?>
+			<?= $details_arr[0]->Description ?>
 			<div class="mt-4 mb-5 pb-sm-4">
 				<?= $details_arr[0]->Details ?>
 			</div>
