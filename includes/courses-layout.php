@@ -13,6 +13,12 @@ function courses_form_display() {
 	<div class="container">
 		<div class="row">
 			<div class="col-3">
+				<?php if ( isset($_POST['semester']) && $_POST['semester'] != 0 ) : ?>
+					<a class="btn btn-primary btn-sm" href="https://www2.creol.ucf.edu/Academics/Courses/TimeTable.aspx?Semester=<?= $_POST['semester'] ?>" target="_blank">
+						Timetable View
+					</a>
+				<?php endif; ?>
+				<br>
 				<form method="post" name="form">
 					<div class="form-group">
 						<label for="semester">Semester</label>
@@ -71,16 +77,13 @@ function courses_form_display() {
 			<div class="col">
 				<?php
 				if ( isset( $_POST['semester'] ) && isset( $_POST['instructor'] ) && isset( $_POST['course'] ) && ( isset( $_POST['undergrad'] ) || isset( $_POST['grad'] ) ) ) {
-					$semester = $_POST['semester'];
-					$instructor = $_POST['instructor'];
-					$course = $_POST['course'];
 					$level = get_level( $_POST['undergrad'], $_POST['grad'] );
 
-					if ( $semester == 0 && $instructor == -1 && $course == 0 ) {
+					if ( $_POST['semester'] == 0 && $_POST['instructor'] == -1 && $_POST['course'] == 0 ) {
 						echo 'Select a semester, instructor, or course';
 					} else {
 						if ( has_filter( 'courses_display' ) ) {
-							echo apply_filters( 'courses_display', $semester, $instructor, $course, $level );
+							echo apply_filters( 'courses_display', $_POST['semester'], $_POST['instructor'], $_POST['course'], $level );
 						}
 					}
 				} else {
