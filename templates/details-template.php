@@ -41,7 +41,7 @@ the_post(); ?>
 	if ( isset( $_GET['courseid'] ) ) {
 		details_page( $_GET['courseid'] );
 	} else {
-		the_content();
+		echo 'Go to the <a href="/courses/">Courses page</a> for details on a specific course.';
 	}
 	?>
 </article>
