@@ -17,4 +17,12 @@ function syllabus_pdf( $schedule_id, $course ) {
 
 if ( isset( $_GET['scheduleid'] ) && isset( $_GET['course'] ) ) {
 	syllabus_pdf( $_GET['scheduleid'], $_GET['course'] );
+} else {
+	get_header();
+	?>
+	<div class="container">
+		Go to the <a href="/courses/">Courses page</a> to get a course syllabus.
+	</div>
+	<?php
+	get_footer();
 }
