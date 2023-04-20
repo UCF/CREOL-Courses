@@ -69,6 +69,7 @@ function courses_form_display() {
 						<label class="form-check-label">
 							<input class="form-check-input" type="checkbox" name="grad" value=0
 							<?= ( isset($_POST['level']) && ( $_POST['level'] == 2 || $_POST['level'] == 0 ) ) ? 'checked' : '' ?>>
+							<?= $_POST['level'] ?>
 							 Graduate
 						</label>
 					</div>
