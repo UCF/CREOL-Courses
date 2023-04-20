@@ -17,7 +17,7 @@ function details_page( $course_id ) {
 				<?= $details_arr[0]->Details ?>
 			</div>
 		</div>
-		<div class="col-3">
+		<div class="col-2">
 			<p class="font-weight-bold letter-spacing-1">Syllabi</p>
 			<ul class="list-group list-group-flush">
 				<?php foreach ( $syllabus_arr as $curr ) : ?>
