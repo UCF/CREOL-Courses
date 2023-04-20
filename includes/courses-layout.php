@@ -50,14 +50,6 @@ function courses_form_display() {
 							<?php endfor; ?>
 						</select>
 					</div>
-					<!-- <div class="form-group">
-						<label for="level">Level</label>
-						<select id="level" name="level" class="form-control">
-							<option value=2 <?= ( isset($_POST['level']) && $_POST['level'] == 2 ) ? 'selected=true' : '' ?>>All</option>
-							<option value=1 <?= ( isset($_POST['level']) && $_POST['level'] == 1 ) ? 'selected=true' : '' ?>>Undergraduate</option>
-							<option value=0 <?= ( isset($_POST['level']) && $_POST['level'] == 0 ) ? 'selected=true' : '' ?>>Graduate</option>
-						</select>
-					</div> -->
 					<div class="form-check">
 						<label class="form-check-label">
 							<input id="undergrad" class="form-check-input" type="checkbox" name="undergrad" value=1 
