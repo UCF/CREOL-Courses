@@ -13,7 +13,7 @@ function courses_form_display() {
 	<div class="container">
 		<div class="row">
 			<div class="col-3">
-				<a class="btn btn-primary btn-sm" href="https://www2.creol.ucf.edu/Academics/Courses/TimeTable.aspx?Semester=<?= $semester_arr[0]->SemesterSerial ?>" target="_blank">
+				<a class="btn btn-primary" href="https://www2.creol.ucf.edu/Academics/Courses/TimeTable.aspx?Semester=<?= $semester_arr[0]->SemesterSerial ?>" target="_blank">
 					Timetable View
 				</a>
 				<br><br>
