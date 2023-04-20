@@ -22,7 +22,7 @@ function details_page( $course_id ) {
 			<ul class="list-group list-group-flush">
 				<?php foreach ( $syllabus_arr as $curr ) : ?>
 				<li class="list-group-item">
-					<a href="/syllabus/?scheduleid=<?= $curr->CourseScheduleID ?>&course=<?= trim( $details_arr[0]->Course ) ?>" target="_blank"><?= $curr->Semester ?></a>
+					<a href="/courses/syllabus/?scheduleid=<?= $curr->CourseScheduleID ?>&course=<?= trim( $details_arr[0]->Course ) ?>" target="_blank"><?= $curr->Semester ?></a>
 				</li>
 				<?php endforeach; ?>
 			</ul>
