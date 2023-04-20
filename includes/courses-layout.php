@@ -60,14 +60,14 @@ function courses_form_display() {
 					</div> -->
 					<div class="form-check">
 						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" name="undergrad" value=1 
+							<input id="undergrad" class="form-check-input" type="checkbox" name="undergrad" value=1 
 							<?= ( isset($_POST['undergrad'] ) &&  $_POST['undergrad'] == 1 ) ? 'checked' : '' ?>>
 							 Undergraduate
 						</label>
 					</div>
 					<div class="form-check">
 						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" name="grad" value=0
+							<input id="grad" class="form-check-input" type="checkbox" name="grad" value=0
 							<?= ( isset($_POST['grad'] ) && $_POST['grad'] == 0 ) ? 'checked' : '' ?>>
 							 Graduate
 						</label>
@@ -96,6 +96,8 @@ function courses_form_display() {
 				?>
 					<script>
 						document.getElementById("semester").selectedIndex = 1;
+						document.getElementById("undergrad").checked = true;
+						document.getElementById("grad").checked = true;
 					</script>
 				<?php
 				}
