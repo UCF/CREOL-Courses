@@ -72,7 +72,7 @@ function courses_form_display() {
 					Timetable View
 				</a>
 			</div>
-			<div class="col mt-5">
+			<div class="col mt-lg-0 mt-5">
 				<?php
 				if ( isset( $_POST['semester'] ) && isset( $_POST['instructor'] ) && isset( $_POST['course'] ) && ( isset( $_POST['undergrad'] ) || isset( $_POST['grad'] ) ) ) {
 					$level = get_level( $_POST['undergrad'], $_POST['grad'] );
