@@ -9,7 +9,7 @@ function details_page( $course_id ) {
 	$syllabus_arr = get_json( $syllabus_url );
 ?>
 <div class="container">
-	<a href="/courses/" class="font-size-lg"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></a>
+	<a href="/courses/" class="h2"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></a>
 	<h1 class="mt-3 mt-sm-4 mt-md-5 mb-3"><?= $details_arr[0]->Course . '- ' . $details_arr[0]->Title ?></h1>
 	<div class="row">
 		<div class="col">
