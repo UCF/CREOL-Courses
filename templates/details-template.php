@@ -10,7 +10,7 @@ function details_page( $course_id ) {
 ?>
 <div class="container">
 	<div class="mt-3 mt-sm-4 mt-md-5 mb-3">
-		<a href="/courses/" class="h2"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></a>
+		<a href="/courses/" class="h2 text-primary"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></a>
 		<h1><?= $details_arr[0]->Course . '- ' . $details_arr[0]->Title ?></h1>
 	</div>
 	<div class="row">
