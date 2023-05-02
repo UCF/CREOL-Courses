@@ -13,7 +13,7 @@ function timetable_form_display() {
 						<label for="semester">Semester</label>
 						<select name="semester" id="semester" class="form-control">
 							<?php for ( $i = 0; $i < count( $semester_arr ); $i++ ) : ?>
-								<option value="<?= $semester_arr[ $i ]->SemesterSerial ?>" 
+								<option class="font-size-sm" value="<?= $semester_arr[ $i ]->SemesterSerial ?>" 
 								<?= ( isset($_POST['semester']) && $_POST['semester'] == $semester_arr[ $i ]->SemesterSerial ) ? 'selected=true' : '' ?>>
 									<?= $semester_arr[ $i ]->SemesterTxt ?>
 								</option>
