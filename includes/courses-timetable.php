@@ -36,7 +36,7 @@ function timetable_form_display() {
             </form>
         </div>
         <div class="row">
-            <div class="col" style="background-color: #99CCFF;">102</div>
+            <div class="col m-3" style="background-color: #99CCFF;">102</div>
             <div class="col" style="background-color: #66CCFF;">Online</div>
             <div class="col" style="background-color: #FFFF99;">103</div>
             <div class="col" style="background-color: #C0C0C0;">265</div>
