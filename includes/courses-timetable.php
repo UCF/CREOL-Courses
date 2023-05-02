@@ -69,12 +69,12 @@ function timetable_form_display() {
             } else {
                 echo apply_filters( 'timetable_display', semester_serial(), 2 );
         ?>
-        <script>
-            // Sets the form to the correct information.
-            document.getElementById("semester").selectedIndex = 0;
-            document.getElementById("undergrad").checked = true;
-            document.getElementById("grad").checked = true;
-        </script>
+                <script>
+                    // Sets the form to the correct information.
+                    document.getElementById("semester").selectedIndex = 0;
+                    document.getElementById("undergrad").checked = true;
+                    document.getElementById("grad").checked = true;
+                </script>
         <?php
             }
         ?>
@@ -84,9 +84,12 @@ function timetable_form_display() {
 }
 
 function timetable_display( $semester, $level ) {
+    $url = 'https://www2.qa.creol.ucf.edu/CoursesJson.asmx/TimeTableInfo?Semester=' . $semester . '&Level=' . $level;
+    $timetable_info_arr = get_json( $url );
+    
     ob_start();
 
-    echo $semester . ' ' . $level;
+    echo var_dump( $timetable_info_arr );
 
     return ob_get_clean();
 }
