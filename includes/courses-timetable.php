@@ -84,7 +84,7 @@ function timetable_form_display() {
 }
 
 function timetable_display( $semester, $level ) {
-    $url = 'https://www2.qa.creol.ucf.edu/CoursesJson.asmx/TimeTableInfo?Semester=' . $semester . '&Level=' . $level;
+    $url = 'https://api.creol.ucf.edu/CoursesJson.asmx/TimeTableInfo?Semester=' . $semester . '&Level=' . $level;
     $timetable_info_arr = get_json( $url );
     
     ob_start();
