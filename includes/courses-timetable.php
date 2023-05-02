@@ -35,6 +35,11 @@ function timetable_form_display() {
 				<button type="submit" name="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
+        <div class="row">
+            <div class="col" style="background-color: #99CCFF;">102</div>
+            <div class="col" style="background-color: #66CCFF;">Online</div>
+            <div class="col" style="background-color: #FFFF99;">103</div>
+        </div>
         <?php
             if ( isset( $_POST['semester'] ) && ( isset( $_POST['undergrad'] ) || isset( $_POST['grad'] ) ) ) {
                 echo $_POST['semester'] . ' ' . $_POST['undergrad'] . ' ' . $_POST['grad'];
