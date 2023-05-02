@@ -18,21 +18,20 @@ function timetable_form_display() {
 						<?php endfor; ?>
 					</select>
 				</div>
-                <div class="form-check">
+                <div class="form-check m-2">
 					<label class="form-check-label">
 						<input id="undergrad" class="form-check-input" type="checkbox" name="undergrad" value=1 
 						<?= ( isset($_POST['undergrad'] ) &&  $_POST['undergrad'] == 1 ) ? 'checked' : '' ?>>
 						 Undergraduate
 					</label>
 				</div>
-				<div class="form-check">
+				<div class="form-check m-2">
 					<label class="form-check-label">
 						<input id="grad" class="form-check-input" type="checkbox" name="grad" value=0
 						<?= ( isset($_POST['grad'] ) && $_POST['grad'] == 0 ) ? 'checked' : '' ?>>
 						 Graduate
 					</label>
 				</div>
-				<br>
 				<button type="submit" name="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
