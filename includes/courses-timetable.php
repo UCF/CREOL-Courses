@@ -91,7 +91,7 @@ function timetable_display( $semester, $level ) {
 
     //echo var_dump( $timetable_info_arr );
     ?>
-    <table id="timetable" class="table">
+    <table id="timetable" class="table table-bordered">
         <thead>
             <tr>
                 <th>Monday</th>
