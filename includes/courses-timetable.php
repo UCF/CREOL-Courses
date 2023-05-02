@@ -10,6 +10,7 @@ function timetable_form_display() {
             <form method="post" name="form" class="col form-inline">
                 <div class="form-group">
                     <label for="semester">Semester</label>
+                    <br>
 					<select name="semester" id="semester" class="form-control">
 						<?php for ( $i = 0; $i < count( $semester_arr ); $i++ ) : ?>
 							<option value="<?= $semester_arr[ $i ]->SemesterSerial ?>" 
@@ -33,6 +34,7 @@ function timetable_form_display() {
 						 Graduate
 					</label>
 				</div>
+                <br>
                 <button type="submit" name="submit" class="btn btn-primary">Submit</button>
             </form>
             <div class="col-1">
