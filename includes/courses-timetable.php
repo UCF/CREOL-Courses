@@ -89,7 +89,20 @@ function timetable_display( $semester, $level ) {
     
     ob_start();
 
-    echo var_dump( $timetable_info_arr );
+    //echo var_dump( $timetable_info_arr );
+    ?>
+    <table id="timetable" class="table">
+        <thead>
+            <tr>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+        </thead>
+    </table>
+    <?php
 
     return ob_get_clean();
 }
