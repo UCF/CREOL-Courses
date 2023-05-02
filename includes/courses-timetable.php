@@ -8,7 +8,7 @@ function timetable_form_display() {
     <div class="container">
         <div class="row">
             <form method="post" name="form" class="form-inline">
-				<div class="form-group">
+				<div class="form-group m-2">
 					<select name="semester" id="semester" class="form-control">
 						<?php for ( $i = 0; $i < count( $semester_arr ); $i++ ) : ?>
 							<option value="<?= $semester_arr[ $i ]->SemesterSerial ?>" 
