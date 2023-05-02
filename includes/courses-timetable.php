@@ -12,7 +12,6 @@ function timetable_form_display() {
 					<div class="form-group">
 						<label for="semester">Semester</label>
 						<select name="semester" id="semester" class="form-control">
-							<option value=0>All</option>
 							<?php for ( $i = 0; $i < count( $semester_arr ); $i++ ) : ?>
 								<option value="<?= $semester_arr[ $i ]->SemesterSerial ?>" 
 								<?= ( isset($_POST['semester']) && $_POST['semester'] == $semester_arr[ $i ]->SemesterSerial ) ? 'selected=true' : '' ?>>
