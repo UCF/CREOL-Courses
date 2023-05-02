@@ -20,7 +20,7 @@ function timetable_form_display() {
                             <?php endfor; ?>
                         </select>
                     </div>
-                    <div class="col">
+                    <div class="col mt-2">
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input id="undergrad" class="form-check-input" type="checkbox" name="undergrad" value=1 
@@ -36,7 +36,9 @@ function timetable_form_display() {
                             </label>
                         </div>
                     </div>
-                    <button type="submit" name="submit" class="col btn btn-primary">Submit</button>
+                    <div class="col">
+                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                    </div>
                 </div>
             </form>
             <div class="col-1">
