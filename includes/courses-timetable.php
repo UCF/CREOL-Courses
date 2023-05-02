@@ -34,6 +34,7 @@ function timetable_form_display() {
 				</div>
 				<button type="submit" name="submit" class="btn btn-primary">Submit</button>
             </form>
+            <hr class="hr-vertical hr-2">
             <div class="col m-2">
                 <div class="row">
                     <div class="col" style="background-color: #99CCFF;">102</div>
