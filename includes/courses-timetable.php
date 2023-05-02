@@ -9,7 +9,7 @@ function timetable_form_display() {
         <div class="row">
             <form method="post" name="form" class="col">
                 <div class="row">
-                    <div class="form-group col-4">
+                    <div class="form-group col-5">
                         <select name="semester" id="semester" class="form-control">
                             <?php for ( $i = 0; $i < count( $semester_arr ); $i++ ) : ?>
                                 <option value="<?= $semester_arr[ $i ]->SemesterSerial ?>" 
@@ -19,7 +19,7 @@ function timetable_form_display() {
                             <?php endfor; ?>
                         </select>
                     </div>
-                    <div class="col-3">
+                    <div class="col-4">
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input id="undergrad" class="form-check-input" type="checkbox" name="undergrad" value=1 
