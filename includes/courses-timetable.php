@@ -43,7 +43,7 @@ function timetable_form_display() {
             <div class="col-1">
 			    <hr class="hr-vertical h-75">
 		    </div>
-            <div class="col">
+            <div class="col-5">
                 <span class="p-2" style="background-color: #99CCFF;">102</span>
                 <span class="p-2" style="background-color: #66CCFF;">Online</span>
                 <span class="p-2" style="background-color: #FFFF99;">103</span>
