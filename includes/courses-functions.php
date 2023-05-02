@@ -12,16 +12,6 @@ function semester_serial() {
 	}
 }
 
-function get_level( $undergrad, $grad ) {
-	if ( isset($undergrad) && ! isset($grad) ) {
-		return 1;
-	} else if ( ! isset($undergrad) && isset($grad) ) {
-		return 0;
-	} else {
-		return 2;
-	}
-} 
-
 // Formats the class days.
 function class_days( $mon, $tue, $wed, $thu, $fri ) {
 	if ( $mon || $tue || $wed || $thu || $fri ) {
