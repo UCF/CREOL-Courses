@@ -44,7 +44,7 @@ function timetable_form_display() {
             <div class="col-1">
 			    <hr class="hr-vertical h-75">
 		    </div>
-            <div class="col">
+            <div class="col-4">
                 <p class="d-inline-flex">
                     <span class="p-2" style="background-color: #99CCFF;">102</span><br>
                     <span class="p-2" style="background-color: #66CCFF;">Online</span>
