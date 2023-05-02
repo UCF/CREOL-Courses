@@ -12,6 +12,7 @@ function courses_form_display() {
 	?>
 	<div class="container">
 		<div class="row">
+			<!-- Form -->
 			<div class="col-lg-3 col-12">
 				<form method="post" name="form">
 					<div class="form-group">
@@ -72,9 +73,11 @@ function courses_form_display() {
 					Timetable View
 				</a>
 			</div>
+			<!-- Course output from form selection -->
 			<div class="col mt-lg-0 mt-5">
 				<?php
 				if ( isset( $_POST['semester'] ) && isset( $_POST['instructor'] ) && isset( $_POST['course'] ) && ( isset( $_POST['undergrad'] ) || isset( $_POST['grad'] ) ) ) {
+					// Determines what to set level to
 					if ( isset( $_POST['undergrad'] ) && ! isset( $_POST['grad'] ) ) {
 						$level = $_POST['undergrad'];
 					} else if ( ! isset( $_POST['undergrad'] ) && isset( $_POST['grad'] ) ) {
