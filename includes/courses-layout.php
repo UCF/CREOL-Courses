@@ -75,7 +75,13 @@ function courses_form_display() {
 			<div class="col mt-lg-0 mt-5">
 				<?php
 				if ( isset( $_POST['semester'] ) && isset( $_POST['instructor'] ) && isset( $_POST['course'] ) && ( isset( $_POST['undergrad'] ) || isset( $_POST['grad'] ) ) ) {
-					$level = get_level( $_POST['undergrad'], $_POST['grad'] );
+					if ( isset( $_POST['undergrad'] ) && ! isset( $_POST['grad'] ) ) {
+						$level = $_POST['undergrad'];
+					} else if ( ! isset( $_POST['undergrad'] ) && isset( $_POST['grad'] ) ) {
+						$level = $_POST['grad'];
+					} else {
+						$level = 2;
+					}
 
 					if ( $_POST['semester'] == 0 && $_POST['instructor'] == -1 && $_POST['course'] == 0 ) {
 						echo 'Select a semester, instructor, or course';
