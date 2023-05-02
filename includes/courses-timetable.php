@@ -34,6 +34,7 @@ function timetable_form_display() {
 				</div>
 				<button type="submit" name="submit" class="btn btn-primary">Submit</button>
             </form>
+            <div class="col">
             <div class="row">
                 <div class="col" style="background-color: #99CCFF;">102</div>
                 <div class="col" style="background-color: #66CCFF;">Online</div>
@@ -45,6 +46,7 @@ function timetable_form_display() {
                 <div class="col" style="background-color: #FF99FF;">A210</div>
                 <div class="col" style="background-color: #D0FFD0;">A214</div>
                 <div class="col" style="background-color: #99DD99;">Online</div>
+            </div>
             </div>
         </div>
         <?php
