@@ -44,19 +44,15 @@ function timetable_form_display() {
 			    <hr class="hr-vertical h-75">
 		    </div>
             <div class="col-5 d-inline-flex">
-                <p class="d-inline-flex">
-                    <span class="p-2" style="background-color: #99CCFF;">102</span><br>
-                    <span class="p-2" style="background-color: #66CCFF;">Online</span>
-                </p>
+                <span class="p-2" style="background-color: #99CCFF;">102</span><br>
+                <span class="p-2" style="background-color: #66CCFF;">Online</span>
                 <span class="p-2" style="background-color: #FFFF99;">103</span>
                 <span class="p-2" style="background-color: #C0C0C0;">265</span>
                 <span class="p-2" style="background-color: #FF9966;">266</span>
                 <span class="p-2" style="background-color: #CC6699;">A207</span>
                 <span class="p-2" style="background-color: #FF99FF;">A210</span>
-                <p class="d-inline-flex">
-                    <span class="p-2" style="background-color: #D0FFD0;">A214</span>
-                    <span class="p-2" style="background-color: #99DD99;">Online</span>
-                </p>
+                <span class="p-2" style="background-color: #D0FFD0;">A214</span>
+                <span class="p-2" style="background-color: #99DD99;">Online</span>
             </div>
         </div>
     </div>
