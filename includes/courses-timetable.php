@@ -38,23 +38,21 @@ function timetable_form_display() {
 					<button type="submit" name="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
-            <div class="col mt-lg-0 mt-5">
-            <?php
-                if ( isset( $_POST['semester'] ) && ( isset( $_POST['undergrad'] ) || isset( $_POST['grad'] ) ) ) {
-                    echo $_POST['semester'] . ' ' . $_POST['undergrad'] . ' ' . $_POST['grad'];
-                } else {
-            ?>
-                    <script>
-                        // Sets the form to the correct information.
-                        document.getElementById("semester").selectedIndex = 0;
-                        document.getElementById("undergrad").checked = true;
-                        document.getElementById("grad").checked = true;
-                    </script>
-            <?php
-                }
-            ?>
-            </div>
         </div>
+        <?php
+            if ( isset( $_POST['semester'] ) && ( isset( $_POST['undergrad'] ) || isset( $_POST['grad'] ) ) ) {
+                echo $_POST['semester'] . ' ' . $_POST['undergrad'] . ' ' . $_POST['grad'];
+            } else {
+        ?>
+        <script>
+            // Sets the form to the correct information.
+            document.getElementById("semester").selectedIndex = 0;
+            document.getElementById("undergrad").checked = true;
+            document.getElementById("grad").checked = true;
+        </script>
+        <?php
+            }
+        ?>
     </div>
     <?php
     return ob_get_clean();
