@@ -7,7 +7,7 @@ function timetable_form_display() {
     ?>
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-12">
+            <div class="col-lg-2 col-12">
                 <form method="post" name="form">
 					<div class="form-group">
 						<label for="semester">Semester</label>
