@@ -34,18 +34,18 @@ function timetable_form_display() {
 				</div>
 				<button type="submit" name="submit" class="btn btn-primary">Submit</button>
             </form>
-        </div>
-        <div class="row">
-            <div class="col" style="background-color: #99CCFF;">102</div>
-            <div class="col" style="background-color: #66CCFF;">Online</div>
-            <div class="col" style="background-color: #FFFF99;">103</div>
-            <div class="col" style="background-color: #C0C0C0;">265</div>
-            <div class="col" style="background-color: #FF9966;">266</div>
-            <div class="w-100"></div>
-            <div class="col" style="background-color: #CC6699;">A207</div>
-            <div class="col" style="background-color: #FF99FF;">A210</div>
-            <div class="col" style="background-color: #D0FFD0;">A214</div>
-            <div class="col" style="background-color: #99DD99;">Online</div>
+            <div class="row">
+                <div class="col" style="background-color: #99CCFF;">102</div>
+                <div class="col" style="background-color: #66CCFF;">Online</div>
+                <div class="col" style="background-color: #FFFF99;">103</div>
+                <div class="col" style="background-color: #C0C0C0;">265</div>
+                <div class="col" style="background-color: #FF9966;">266</div>
+                <div class="w-100"></div>
+                <div class="col" style="background-color: #CC6699;">A207</div>
+                <div class="col" style="background-color: #FF99FF;">A210</div>
+                <div class="col" style="background-color: #D0FFD0;">A214</div>
+                <div class="col" style="background-color: #99DD99;">Online</div>
+            </div>
         </div>
         <?php
             if ( isset( $_POST['semester'] ) && ( isset( $_POST['undergrad'] ) || isset( $_POST['grad'] ) ) ) {
