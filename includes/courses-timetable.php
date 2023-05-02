@@ -54,8 +54,20 @@ function timetable_form_display() {
         </div>
         <?php
             if ( isset( $_POST['semester'] ) && ( isset( $_POST['undergrad'] ) || isset( $_POST['grad'] ) ) ) {
-                echo $_POST['semester'] . ' ' . $_POST['undergrad'] . ' ' . $_POST['grad'];
+                // Determines what to set level to
+				if ( isset( $_POST['undergrad'] ) && ! isset( $_POST['grad'] ) ) {
+					$level = $_POST['undergrad'];
+				} else if ( ! isset( $_POST['undergrad'] ) && isset( $_POST['grad'] ) ) {
+					$level = $_POST['grad'];
+				} else {
+					$level = 2;
+				}
+
+                if ( has_filter( 'timetable_display' ) ) {
+                    echo apply_filters( 'timetable_display', $_POST['semester'], $level );
+                }
             } else {
+                echo apply_filters( 'timetable_display', semester_serial(), 2 );
         ?>
         <script>
             // Sets the form to the correct information.
@@ -72,5 +84,10 @@ function timetable_form_display() {
 }
 
 function timetable_display( $semester, $level ) {
-    
+    ob_start();
+
+    echo $semester . ' ' . $level;
+
+    return ob_get_clean();
 }
+add_filter( 'timetable_display', 'timetable_display', 10, 2 );
