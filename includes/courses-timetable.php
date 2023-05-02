@@ -41,6 +41,7 @@ function timetable_form_display() {
             <div class="col" style="background-color: #FFFF99;">103</div>
             <div class="col" style="background-color: #C0C0C0;">265</div>
             <div class="col" style="background-color: #FF9966;">266</div>
+            <div class="w-100"></div>
             <div class="col" style="background-color: #CC6699;">A207</div>
             <div class="col" style="background-color: #FF99FF;">A210</div>
             <div class="col" style="background-color: #D0FFD0;">A214</div>
