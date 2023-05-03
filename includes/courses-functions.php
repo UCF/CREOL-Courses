@@ -55,7 +55,7 @@ function matrix_timetable( $timetable_json ) {
 
 	// 	$table[$start_row][$col] = $course;
 		
-	// 	for ( $i = $start_row + 1; i <= $end_row; $i++ ) {
+	// 	for ( $i = $start_row + 1; $i <= $end_row; $i++ ) {
 	// 		$table[$i][$col] = 1;
 	// 	}
 	// }
