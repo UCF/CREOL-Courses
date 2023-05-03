@@ -29,7 +29,7 @@ function instructor_url( $name ) {
 }
 
 // Hour * 4 + intdiv( Minutes, 15 )
-function get_time( $time ) {
+function get_row( $time ) {
 	$time = strtotime( $time );
 	$hour = idate( "H", $time );
 	$min = idate( "i", $time );
@@ -38,9 +38,27 @@ function get_time( $time ) {
 }
 
 function matrix_timetable( $timetable_json ) {
-	$timetable_json[0] = (array)$timetable_json[0];
-	$timetable_json[0]['column'] = 0;
-	$timetable_json[0] = (object)$timetable_json[0];
+	$min_time = 32;		// 8:00 am
+	$max_time = 80;		// 8:00 pm
+	$col = 0;
 
-	echo var_dump( $timetable_json );
+	$table = array( );
+
+	foreach ( $timetable_json as $course ) {
+		$start_row = get_row( $course->StartTime ) - $min_time;
+		$end_row = get_row( $course->EndTime ) - $min_time;
+
+		while ( isset( $table[$start_row][$col] ) ) {
+			// create another col and move there
+			$col += 1;
+		}
+
+		$table[$start_row][$col] = $course;
+		
+		for ( $i = $start_row + 1; i <= $end_row; $i++ ) {
+			$table[$i][$col] = 1;
+		}
+	}
+
+	echo var_dump( $table );
 }
