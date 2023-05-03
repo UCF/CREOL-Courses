@@ -40,4 +40,6 @@ function matrix_timetable( $timetable_json ) {
 	$table = array( );
 
 	echo var_dump( $timetable_json[0] );
+	echo $timetable_json[0]->StartTime;
+	echo get_time( $timetable_json[0]->StartTime );
 }
