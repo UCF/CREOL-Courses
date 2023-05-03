@@ -33,15 +33,14 @@ function get_time( $time ) {
 	$time = strtotime( $time );
 	$hour = idate( "H", $time );
 	$min = idate( "i", $time );
-	echo $time . ' ' . $hour . ' ' . $min;
 
 	return ( $hour * 4 ) + intdiv( $min, 15 );
 }
 
 function matrix_timetable( $timetable_json ) {
-	$table = array( );
+	$timetable_json[0] = (array)$timetable_json[0];
+	$timetable_json[0]['column'] = '0';
+	$timetable_json[0] = (object)$timetable_json[0];
 
-	// echo var_dump( $timetable_json[0] );
-	echo $timetable_json[0]->StartTime . '<br>';
-	echo get_time( $timetable_json[0]->StartTime );
+	echo var_dump( $timetable_json );
 }
