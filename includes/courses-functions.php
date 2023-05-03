@@ -30,7 +30,8 @@ function instructor_url( $name ) {
 
 // Hour * 4 + intdiv( Minutes, 15 )
 function get_time( $time ) {
-	$hour = date( "H", $time );
+	$time = strtotime( $time );
+	$hour = idate( "H", $time );
 	$min = date( "i", $time );
 	echo $time . ' ' . $hour . ' ' . $min;
 
