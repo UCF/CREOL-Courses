@@ -32,7 +32,7 @@ function instructor_url( $name ) {
 function get_time( $time ) {
 	$hour = date( "H", $time );
 	$min = date( "i", $time );
-	echo $hour . ' ' . $min;
+	echo $time . ' ' . $hour . ' ' . $min;
 
 	return ( $hour * 4 ) + intdiv( $min, 15 );
 }
