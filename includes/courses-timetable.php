@@ -86,10 +86,10 @@ function timetable_form_display() {
 function timetable_display( $semester, $level ) {
     $url = 'https://api.creol.ucf.edu/CoursesJson.asmx/TimeTableInfo?Semester=' . $semester . '&Level=' . $level;
     $timetable_info_arr = get_json( $url );
+
+    $timetable = matrix_timetable( $timetable_info_arr );
     
     ob_start();
-
-    //echo var_dump( $timetable_info_arr );
     ?>
     <table id="timetable" class="table table-bordered">
         <thead>
