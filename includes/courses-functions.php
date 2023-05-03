@@ -39,7 +39,7 @@ function get_time( $time ) {
 
 function matrix_timetable( $timetable_json ) {
 	$timetable_json[0] = (array)$timetable_json[0];
-	$timetable_json[0]['column'] = '0';
+	$timetable_json[0]['column'] = 0;
 	$timetable_json[0] = (object)$timetable_json[0];
 
 	echo var_dump( $timetable_json );
