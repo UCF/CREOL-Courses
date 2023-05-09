@@ -134,13 +134,13 @@ class TimeTable {
 
     public function table_header() {
         ?>
-        <table id="timetable" class="table table-sm table-responsive mx-5">
+        <table id="timetable" class="table table-sm table-bordered table-responsive mx-5">
             <thead>
                 <tr class="bg-primary">
                     <th></th>
                     <?php for ( $i = 1; $i <= 5; $i++ ) : ?>
                     <th colspan="<?= $this->num_cols[$i] ?>" 
-                        style="width:<?= 100 / count( $this->table ) ?>%; border-style:none solid;border-color:black;border-width:2px;">
+                        style="width:<?= 100 / count( $this->table ) ?>%;">
                         <?= self::get_day( $i ) ?>
                     </th>
                     <?php endfor; ?>
