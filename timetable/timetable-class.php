@@ -169,7 +169,7 @@ class TimeTable {
             ?>
             <tr>
                 <!-- time sidebar -->
-                <th scope="row" class="pt-0 font-size-sm" style="width:2.5%;"><?= date( 'g:i', $this->get_time($r) ) ?></th>
+                <th scope="row" class="pt-0 font-size-sm" style="width:2.5%;"><?= date( 'g:i', $this->get_time($r) ) . ' ' . $this->get_time($r) ?></th>
                 <?php
                 for ( $c = 0; $c < $total_cols; $c++ ) {
                     if ( isset( $this->table[$c][$r] ) ) {
