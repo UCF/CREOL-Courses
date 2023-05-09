@@ -150,7 +150,11 @@ class TimeTable {
     
     private function get_time( $row ) {
         $time = ( $row + $this->start_time ) * 25;
-        if ( $time % 100 != 0 ) { $time = '&nbsp'; }
+        if ( $time % 100 != 0 ) {
+            $time = '&nbsp'; 
+        } else {
+            $time = rtrim( $time, '00' );
+        }
         return $time;
     }
     
