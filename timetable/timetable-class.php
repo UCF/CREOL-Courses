@@ -130,12 +130,8 @@ class TimeTable {
     private function get_time( $row ) {
         $time = ( $row + $this->start_time ) * 25;
         
-        if ( $time % 100 != 0 ) {
-            $time = '&nbsp';
-        } else {
-            // date format handles time in seconds
-            $time = substr( $time, 0, 2 ) * 3600;
-        }
+        // date format handles time in seconds
+        $time = substr( $time, 0, 2 ) * 3600;
         
         return $time;
     }
@@ -168,7 +164,7 @@ class TimeTable {
             ?>
             <tr>
                 <!-- time sidebar -->
-                <th scope="row" class="font-size-sm" style="width:2.5%;"><?= ( ($r + $this->start_time) % 4 == 0 ) ? $r : '&nbsp'//date( 'g:i', $this->get_time($r) ) ?></th>
+                <th scope="row" class="font-size-sm" style="width:2.5%;"><?= ( ($r + $this->start_time) % 4 == 0 ) ? date( 'g:i', $this->get_time($r) ) : '&nbsp' ?></th>
                 <?php
                 for ( $c = 0; $c < $total_cols; $c++ ) {
                     if ( isset( $this->table[$c][$r] ) ) {
