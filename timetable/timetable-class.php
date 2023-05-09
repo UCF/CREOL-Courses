@@ -153,7 +153,7 @@ class TimeTable {
         if ( $time % 100 != 0 ) {
             $time = '&nbsp';
         } else {
-            $time = substr( $time, 0, 1 ) * 3600;
+            $time = substr( $time, 0, 2 ) * 3600;
         }
         return $time;
     }
