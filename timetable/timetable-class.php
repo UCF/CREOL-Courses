@@ -177,7 +177,7 @@ class TimeTable {
                         <?php if ( gettype( $curr_cell ) == 'object' ) : ?>
                         <td rowspan="<?= $curr_cell->Rowspan ?>"
                         class="line-height-1"
-                        style="font-size: 0.725rem; background-color: 
+                        style="font-size: 0.7rem; background-color: 
                         <?= self::get_room_color( $curr_cell->CREOLRoomID, $curr_cell->isWebCourse ) ?>;">
                             <span class="font-weight-bold"><?= $curr_cell->Course . '<br>' . $curr_cell->Title ?></span>
                             <br>
