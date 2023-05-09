@@ -130,15 +130,13 @@ class TimeTable {
                 
                 return $color;
     }
-
     
     public function table_header() {
         ?>
-        <div class="col">
         <table id="timetable" class="table table-sm table-bordered table-responsive">
             <thead>
                 <tr class="bg-primary">
-                    <!-- <th></th> -->
+                    <th></th>
                     <?php for ( $i = 1; $i <= 5; $i++ ) : ?>
                         <th colspan="<?= $this->num_cols[$i] ?>" 
                         style="width:<?= 100 / count( $this->table ) ?>%;">
@@ -203,7 +201,6 @@ class TimeTable {
         ?>
         </tbody>
         </table>
-        </div>
         <?php
     }
 }
