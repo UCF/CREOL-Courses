@@ -149,8 +149,7 @@ class TimeTable {
     }
     
     private function get_time( $row ) {
-        $row *= 15;
-        $time = ceil( $row + $this->start_time / 4 );
+        $time = ( $row + $this->start_time ) * 15;
         return $time;
     }
     
