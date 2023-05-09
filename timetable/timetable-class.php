@@ -15,10 +15,7 @@ class TimeTable {
         $this->url = $url;
     }
 
-    public function get_num_cols() {
-        return $this->num_cols;
-    }
-
+    // For testing purposes
     public function get_table() {
         $this->create_timetable();
         print("<pre>" . print_r( $this->table, true ) . "</pre>");
@@ -29,7 +26,6 @@ class TimeTable {
         $hour = idate( "H", $time );
         $min = idate( "i", $time );
         
-        // return ( $hour * 2 ) + ceil( $min / 30 );
         return ( $hour * 4 ) + ceil( $min / 15 );
     }
 
@@ -60,10 +56,11 @@ class TimeTable {
         $prev_day = 1;              // Monday
         $prev_total = 0;
         $courses = get_json( $this->url );
+
+        // Handles the start time and end time of the table
         $this->start_time = self::get_row( end( $courses )->StartTime );
         $this->end_time = self::get_row( end( $courses )->EndTime );
         array_pop( $courses );
-        echo $this->start_time . ' ' . $this->end_time;
 
         foreach ( $courses as $course ) {
             $day = $course->DOW;
@@ -99,7 +96,6 @@ class TimeTable {
 
         $this->num_cols[$day] = count( $this->table ) - $prev_total; 
     }
-
     
     private static function get_room_color( $room, $is_webcourse ) {
         switch ( $room ) {
@@ -121,14 +117,27 @@ class TimeTable {
                     case 225:
                 $color = '#FF99FF';
                 break;
-                case 229:
-                    $color = ( $is_webcourse ) ? '#99DD99' : '#D0FFD0';
-                    break;
-                    default:
-                    $color = '#FFCCCB';
-                }
-                
-                return $color;
+            case 229:
+                $color = ( $is_webcourse ) ? '#99DD99' : '#D0FFD0';
+                break;
+            default:
+                $color = '#FFCCCB';
+        }
+    
+        return $color;
+    }
+            
+    private function get_time( $row ) {
+        $time = ( $row + $this->start_time ) * 25;
+        
+        if ( $time % 100 != 0 ) {
+            $time = '&nbsp';
+        } else {
+            // date format handles time in seconds
+            $time = substr( $time, 0, 2 ) * 3600;
+        }
+        
+        return $time;
     }
     
     public function table_header() {
@@ -148,16 +157,6 @@ class TimeTable {
             <?php 
     }
     
-    private function get_time( $row ) {
-        $time = ( $row + $this->start_time ) * 25;
-        if ( $time % 100 != 0 ) {
-            $time = '&nbsp';
-        } else {
-            // date format handles time in seconds
-            $time = substr( $time, 0, 2 ) * 3600;
-        }
-        return $time;
-    }
     
     public function display() {
         $total_rows = $this->end_time - $this->start_time;
