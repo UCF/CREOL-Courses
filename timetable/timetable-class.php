@@ -160,7 +160,7 @@ class TimeTable {
         <tbody>
         <?php
         for ( $r = 0; $r < $total_rows; $r++ ) {
-            $time_text = ( $r % 4 == 0 ) ? $this->get_time( $r ) : '&nbsp';
+            $time_text = ( $r % 4 == 0 ) ? $r : '&nbsp';
             ?>
             <tr>
                 <!-- time sidebar -->
