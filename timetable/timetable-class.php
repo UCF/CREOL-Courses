@@ -131,7 +131,7 @@ class TimeTable {
         $time = ( $row + $this->start_time ) * 25;
         
         // date format handles time in seconds
-        $time = substr( $time, 0, 2 ) * 3600;
+        $time = substr( $time, 0, -2 ) * 3600;
         
         return $time;
     }
