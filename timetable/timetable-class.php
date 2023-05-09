@@ -140,8 +140,7 @@ class TimeTable {
                     <th></th>
                     <?php for ( $i = 1; $i <= 5; $i++ ) : ?>
                     <th colspan="<?= $this->num_cols[$i] ?>" 
-                        class="border-top-0 border-bottom-0"
-                        style="width:<?= 100 / count( $this->table ) ?>%">
+                        style="width:<?= 100 / count( $this->table ) ?>%; border-style:solid none;border-color:black;border-width:5px;">
                         <?= self::get_day( $i ) ?>
                     </th>
                     <?php endfor; ?>
