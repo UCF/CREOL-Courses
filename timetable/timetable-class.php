@@ -130,7 +130,7 @@ class TimeTable {
     private function get_time( $row ) {
         $time = ( $row + $this->start_time ) * 25;
         
-        if ( $time % 1000 != 0 ) {
+        if ( $time % 100 != 0 ) {
             $time = '&nbsp';
         } else {
             // date format handles time in seconds
