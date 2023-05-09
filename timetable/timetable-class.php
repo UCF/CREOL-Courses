@@ -149,7 +149,7 @@ class TimeTable {
     }
     
     private function get_time( $row ) {
-        $time = ( $row + $this->start_time ) * 15;
+        $time = ( $row + $this->start_time ) * 25;
         return $time;
     }
     
