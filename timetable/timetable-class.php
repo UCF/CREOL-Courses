@@ -132,7 +132,7 @@ class TimeTable {
     }
 
     private function get_time( $row ) {
-        $time = intdiv( $row + $this->start_time, 4 );
+        $time = ceil( $row + $this->start_time / 4 );
         return $time . ':00';
     }
 
