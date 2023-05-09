@@ -134,7 +134,7 @@ class TimeTable {
     
     public function table_header() {
         ?>
-        <table id="timetable" class="table table-sm table-bordered table-responsive mx-5">
+        <table id="timetable" class="table table-sm table-bordered table-responsive">
             <thead>
                 <tr class="bg-primary">
                     <!-- <th></th> -->
