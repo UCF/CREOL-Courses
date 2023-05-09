@@ -92,9 +92,6 @@ function timetable_display( $semester, $level ) {
     $timetable->table_header();
     $timetable->display();
     // $timetable->get_table();
-    ?>
-    </table>
-    <?php
 
     return ob_get_clean();
 }
