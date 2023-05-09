@@ -131,27 +131,31 @@ class TimeTable {
                 return $color;
     }
 
-    private function get_time( $row ) {
-        $time = ceil( $row + $this->start_time / 4 );
-        return $time . ':00';
-    }
-
+    
     public function table_header() {
         ?>
         <table id="timetable" class="table table-sm table-bordered table-responsive mx-5">
             <thead>
                 <tr class="bg-primary">
-                    <th></th>
+                    <!-- <th></th> -->
                     <?php for ( $i = 1; $i <= 5; $i++ ) : ?>
-                    <th colspan="<?= $this->num_cols[$i] ?>" 
+                        <th colspan="<?= $this->num_cols[$i] ?>" 
                         style="width:<?= 100 / count( $this->table ) ?>%;">
                         <?= self::get_day( $i ) ?>
                     </th>
                     <?php endfor; ?>
                 </tr>
             </thead>
-        <?php 
+            <?php 
     }
+    
+    // private function get_time() {
+    //     // $time = ceil( $row + $this->start_time / 4 );
+    //     // return $time . ':00';
+    //     if ( ( $this->start_time % 4 ) != 0 ) {
+
+    //     }
+    // }
     
     public function display() {
         $total_rows = $this->end_time - $this->start_time;
@@ -164,7 +168,7 @@ class TimeTable {
             ?>
             <tr>
                 <!-- time sidebar -->
-                <th scope="row" class="pt-0 font-size-sm" style="width:2.5%;"><?= $time_text ?></th>
+                <!-- <th scope="row" class="pt-0 font-size-sm" style="width:2.5%;"><?= $time_text ?></th> -->
                 <?php
                 for ( $c = 0; $c < $total_cols; $c++ ) {
                     if ( isset( $this->table[$c][$r] ) ) {
