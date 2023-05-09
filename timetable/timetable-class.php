@@ -168,7 +168,7 @@ class TimeTable {
             ?>
             <tr>
                 <!-- time sidebar -->
-                <th scope="row" class="pt-0 font-size-sm" style="width:2.5%;"><?= ( ($r + $this->start_time) % 4 == 0 ) ? $r : '&nbsp'//date( 'g:i', $this->get_time($r) ) ?></th>
+                <th scope="row" class="font-size-sm" style="width:2.5%;"><?= ( ($r + $this->start_time) % 4 == 0 ) ? $r : '&nbsp'//date( 'g:i', $this->get_time($r) ) ?></th>
                 <?php
                 for ( $c = 0; $c < $total_cols; $c++ ) {
                     if ( isset( $this->table[$c][$r] ) ) {
