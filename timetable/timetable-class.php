@@ -134,6 +134,7 @@ class TimeTable {
     
     public function table_header() {
         ?>
+        <div class="col">
         <table id="timetable" class="table table-sm table-bordered table-responsive">
             <thead>
                 <tr class="bg-primary">
@@ -202,6 +203,7 @@ class TimeTable {
         ?>
         </tbody>
         </table>
+        </div>
         <?php
     }
 }
