@@ -63,6 +63,7 @@ class TimeTable {
         $this->start_time = get_row( end( $courses )->StartTime );
         $this->end_time = get_row( end( $courses )->EndTime );
         array_pop( $courses );
+        echo $this->start_time . ' ' . $this->end_time;
 
         foreach ( $courses as $course ) {
             $day = $course->DOW;
