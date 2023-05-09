@@ -27,12 +27,3 @@ function instructor_url( $name ) {
 		return 'https://creol.ucf.edu/person/' . str_replace( $find, $replace, $name );
 	}
 }
-
-// Hour * 4 + intdiv( Minutes, 15 )
-function get_row( $time ) {
-	$time = strtotime( $time );
-	$hour = idate( "H", $time );
-	$min = idate( "i", $time );
-
-	return ( $hour * 4 ) + intdiv( $min, 15 );
-}
