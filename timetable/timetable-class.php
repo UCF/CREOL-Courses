@@ -148,13 +148,11 @@ class TimeTable {
             <?php 
     }
     
-    // private function get_time() {
-    //     // $time = ceil( $row + $this->start_time / 4 );
-    //     // return $time . ':00';
-    //     if ( ( $this->start_time % 4 ) != 0 ) {
-
-    //     }
-    // }
+    private function get_time( $row ) {
+        $row *= 15;
+        $time = ceil( $row + $this->start_time / 4 );
+        return $time;
+    }
     
     public function display() {
         $total_rows = $this->end_time - $this->start_time;
@@ -163,7 +161,7 @@ class TimeTable {
         <tbody>
         <?php
         for ( $r = 0; $r < $total_rows; $r++ ) {
-            $time_text = ( $r % 4 == 0 ) ? $r : '&nbsp';
+            $time_text = ( $r % 4 == 0 ) ? get_time( $r ) : '&nbsp';
             ?>
             <tr>
                 <!-- time sidebar -->
