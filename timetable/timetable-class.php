@@ -137,7 +137,7 @@ class TimeTable {
         <table id="timetable" class="table table-sm table-responsive table-bordered m-3">
             <thead>
                 <tr class="bg-primary">
-                    <th></th>
+                    <th style="width:40px;"></th>
                     <?php for ( $i = 1; $i <= 5; $i++ ) : ?>
                     <th colspan="<?= $this->num_cols[$i] ?>" 
                         style="width:<?= 100 / count( $this->table ) ?>%">
