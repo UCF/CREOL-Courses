@@ -150,6 +150,7 @@ class TimeTable {
     
     private function get_time( $row ) {
         $time = ( $row + $this->start_time ) * 25;
+        if ( $time % 100 != 0 ) { $time = '&nbsp'; }
         return $time;
     }
     
@@ -160,11 +161,11 @@ class TimeTable {
         <tbody>
         <?php
         for ( $r = 0; $r < $total_rows; $r++ ) {
-            $time_text = ( $r % 4 == 0 ) ? $r : '&nbsp';
+            // $time_text = ( $r % 4 == 0 ) ? $r : '&nbsp';
             ?>
             <tr>
                 <!-- time sidebar -->
-                <th scope="row" class="pt-0 font-size-sm" style="width:2.5%;"><?= $time_text . ' ' . $this->get_time($r) ?></th>
+                <th scope="row" class="pt-0 font-size-sm" style="width:2.5%;"><?= $this->get_time($r) ?></th>
                 <?php
                 for ( $c = 0; $c < $total_cols; $c++ ) {
                     if ( isset( $this->table[$c][$r] ) ) {
