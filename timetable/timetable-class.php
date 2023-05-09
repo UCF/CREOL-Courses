@@ -137,7 +137,7 @@ class TimeTable {
         <table id="timetable" class="table table-sm table-responsive table-bordered m-3">
             <thead>
                 <tr class="bg-primary">
-                    <th style="width:40px;"></th>
+                    <th></th>
                     <?php for ( $i = 1; $i <= 5; $i++ ) : ?>
                     <th colspan="<?= $this->num_cols[$i] ?>" 
                         style="width:<?= 100 / count( $this->table ) ?>%">
@@ -160,7 +160,7 @@ class TimeTable {
             ?>
             <tr>
                 <!-- time sidebar -->
-                <th scope="row" class="pt-0 font-size-sm" style="white-space:nowrap;"><?= $time_text ?></th>
+                <th scope="row" class="pt-0 font-size-sm" style="width:5%;"><?= $time_text ?></th>
                 <?php
                 for ( $c = 0; $c < $total_cols; $c++ ) {
                     if ( isset( $this->table[$c][$r] ) ) {
