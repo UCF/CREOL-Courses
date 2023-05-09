@@ -5,6 +5,7 @@ function timetable_form_display() {
 
     ob_start();
     ?>
+    <div class="container">
         <div class="row">
             <form method="post" name="form" class="form-inline">
 				<div class="form-group m-2">
@@ -51,6 +52,7 @@ function timetable_form_display() {
                 </div>
             </div>
         </div>
+    </div>
         <?php
             if ( isset( $_POST['semester'] ) && ( isset( $_POST['undergrad'] ) || isset( $_POST['grad'] ) ) ) {
                 // Determines what to set level to
