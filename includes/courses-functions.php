@@ -36,29 +36,3 @@ function get_row( $time ) {
 
 	return ( $hour * 4 ) + intdiv( $min, 15 );
 }
-
-function matrix_timetable( $timetable_json ) {
-	// $min_time = 32;		// 8:00 am
-	// $max_time = 80;		// 8:00 pm
-	// $col = 0;
-
-	// $table = array( );
-
-	// foreach ( $timetable_json as $course ) {
-	// 	$start_row = get_row( $course->StartTime ) - $min_time;
-	// 	$end_row = get_row( $course->EndTime ) - $min_time;
-
-	// 	while ( isset( $table[$start_row][$col] ) ) {
-	// 		// create another col and move there
-	// 		$col += 1;
-	// 	}
-
-	// 	$table[$start_row][$col] = $course;
-		
-	// 	for ( $i = $start_row + 1; $i <= $end_row; $i++ ) {
-	// 		$table[$i][$col] = 1;
-	// 	}
-	// }
-
-	// echo var_dump( $table );
-}
