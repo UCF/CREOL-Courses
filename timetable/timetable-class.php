@@ -96,9 +96,45 @@ class TimeTable {
         $this->num_cols[$day] = count( $this->table ) - $prev_total; 
     }
 
+    
+    private static function get_room_color( $room, $is_webcourse ) {
+        switch ( $room ) {
+            case 4:
+                $color = ( $is_webcourse ) ? '#66CCFF' : '#99CCFF';
+                break;
+                case 5:
+                $color = '#FFFF99';
+                break;
+            case 157:
+                $color = '#C0C0C0';
+                break;
+            case 158:
+                $color = '#FF9966';
+                break;
+                case 222:
+                    $color = '#CC6699';
+                    break;
+                    case 225:
+                $color = '#FF99FF';
+                break;
+                case 229:
+                    $color = ( $is_webcourse ) ? '#99DD99' : '#D0FFD0';
+                    break;
+                    default:
+                    $color = '#FFCCCB';
+                }
+                
+                return $color;
+    }
+
+    private function get_time( $row ) {
+        $time = intdiv( $row + $this->start_time, 4 );
+        return $time . ':00';
+    }
+
     public function table_header() {
         ?>
-        <table id="timetable" class="table table-sm table-responsive m-0">
+        <table id="timetable" class="table table-sm table-responsive">
             <thead>
                 <tr class="bg-primary">
                     <th></th>
@@ -112,42 +148,7 @@ class TimeTable {
             </thead>
         <?php 
     }
-
-    private static function get_room_color( $room, $is_webcourse ) {
-        switch ( $room ) {
-            case 4:
-                $color = ( $is_webcourse ) ? '#66CCFF' : '#99CCFF';
-                break;
-            case 5:
-                $color = '#FFFF99';
-                break;
-            case 157:
-                $color = '#C0C0C0';
-                break;
-            case 158:
-                $color = '#FF9966';
-                break;
-            case 222:
-                $color = '#CC6699';
-                break;
-            case 225:
-                $color = '#FF99FF';
-                break;
-            case 229:
-                $color = ( $is_webcourse ) ? '#99DD99' : '#D0FFD0';
-                break;
-            default:
-                $color = '#FFCCCB';
-        }
-
-        return $color;
-    }
-
-    private function get_time( $row ) {
-        $time = intdiv( $row + $this->start_time, 4 );
-        return $time . ':00';
-    }
-
+    
     public function display() {
         $total_rows = $this->end_time - $this->start_time;
         $total_cols = count( $this->table );
@@ -158,6 +159,7 @@ class TimeTable {
             $time_text = ( $r % 4 == 0 ) ? $this->get_time( $r ) : '&nbsp';
             ?>
             <tr>
+                <!-- time sidebar -->
                 <th scope="row" class="pt-0" style="width:5%;"><?= $time_text ?></th>
                 <?php
                 for ( $c = 0; $c < $total_cols; $c++ ) {
