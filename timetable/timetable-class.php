@@ -160,7 +160,7 @@ class TimeTable {
             ?>
             <tr>
                 <!-- time sidebar -->
-                <th scope="row" class="pt-0 font-size-sm"><?= $time_text ?></th>
+                <th scope="row" class="pt-0 font-size-sm" style="white-space:nowrap;"><?= $time_text ?></th>
                 <?php
                 for ( $c = 0; $c < $total_cols; $c++ ) {
                     if ( isset( $this->table[$c][$r] ) ) {
