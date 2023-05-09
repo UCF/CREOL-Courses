@@ -30,7 +30,7 @@ class TimeTable {
         $min = idate( "i", $time );
         
         // return ( $hour * 2 ) + ceil( $min / 30 );
-        return ( $hour * 4 ) + intdiv( $min, 15 );
+        return ( $hour * 4 ) + ceil( $min / 15 );
     }
 
     private static function get_day( $day ) {
