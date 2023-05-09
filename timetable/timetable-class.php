@@ -60,6 +60,9 @@ class TimeTable {
         $prev_day = 1;              // Monday
         $prev_total = 0;
         $courses = get_json( $this->url );
+        $this->start_time = end( $courses )->StartTime;
+        $this->end_time = end( $courses )->EndTime;
+        array_pop( $courses );
 
         foreach ( $courses as $course ) {
             $day = $course->DOW;
