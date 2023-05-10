@@ -146,10 +146,12 @@ class TimeTable {
                 <tr class="bg-primary">
                     <th></th>
                     <?php for ( $i = 1; $i <= 5; $i++ ) : ?>
-                        <th colspan="<?= $this->num_cols[$i] ?>" 
-                        style="width:<?= 100 / count( $this->table ) ?>%;">
-                        <?= self::get_day( $i ) ?>
-                    </th>
+                        <?php if ( $this->num_cols[$i] < 1 ) : ?>
+                            <th colspan="<?= $this->num_cols[$i] ?>" 
+                            style="width:<?= 100 / count( $this->table ) ?>%;">
+                                <?= self::get_day( $i ) ?>
+                            </th>
+                        <?php endif; ?>
                     <?php endfor; ?>
                 </tr>
             </thead>
