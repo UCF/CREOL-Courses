@@ -50,7 +50,7 @@ function timetable_form_display() {
 			</div>
 		</div>
 	</div>
-	<div style="padding: 2.5% 5% 5% 5%">
+	<div style="padding: 1% 5% 5% 5%">
 		<?php
 		if ( isset( $_POST['semester'] ) && ( isset( $_POST['undergrad'] ) || isset( $_POST['grad'] ) ) ) {
 			// Determines what to set level to
