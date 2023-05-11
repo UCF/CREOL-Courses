@@ -69,7 +69,7 @@ function courses_form_display() {
 					<button type="submit" name="submit" class="btn btn-primary">Submit</button>
 				</form>
 				<br>
-				<a class="btn btn-primary" href="https://www2.creol.ucf.edu/Academics/Courses/TimeTable.aspx?Semester=<?= $semester_arr[0]->SemesterSerial ?>" target="_blank">
+				<a class="btn btn-primary" href="https://creolcmsdev.smca.ucf.edu/timetable/" target="_blank">
 					Timetable View
 				</a>
 			</div>
