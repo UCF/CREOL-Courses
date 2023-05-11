@@ -33,7 +33,7 @@ function timetable_form_display() {
 					<button type="submit" name="submit" class="btn btn-primary">Submit</button>
 				</form>
 			</div>
-			<div class="col-auto">
+			<div class="col">
 				<hr class="hr-vertical">
 			</div>
 			<div class="col m-2">
@@ -50,7 +50,7 @@ function timetable_form_display() {
 					<div class="col" style="background-color: #99DD99;">Online</div>
 				</div>
 			</div>
-			<div class="col-auto">
+			<div class="col">
 				<hr class="hr-vertical">
 			</div>
 			<div class="col">
