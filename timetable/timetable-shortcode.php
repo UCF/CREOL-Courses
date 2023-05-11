@@ -7,30 +7,32 @@ function timetable_form_display() {
 	?>
 	<div class="container">
 		<div class="row align-items-center">
-			<form method="post" name="form" class="form-inline">
-				<div class="form-group m-2">
-					<select name="semester" id="semester" class="form-control">
-						<?php for ( $i = 0; $i < count( $semester_arr ); $i++ ) : ?>
-							<option value="<?= $semester_arr[ $i ]->SemesterSerial ?>" <?= ( isset( $_POST['semester'] ) && $_POST['semester'] == $semester_arr[ $i ]->SemesterSerial ) ? 'selected=true' : '' ?>>
-								<?= $semester_arr[ $i ]->SemesterTxt ?>
-							</option>
-						<?php endfor; ?>
-					</select>
-				</div>
-				<div class="form-check m-2">
-					<label class="form-check-label">
-						<input id="undergrad" class="form-check-input" type="checkbox" name="undergrad" value=1 <?= ( isset( $_POST['undergrad'] ) && $_POST['undergrad'] == 1 ) ? 'checked' : '' ?>>
-						Undergraduate
-					</label>
-				</div>
-				<div class="form-check m-2">
-					<label class="form-check-label">
-						<input id="grad" class="form-check-input" type="checkbox" name="grad" value=0 <?= ( isset( $_POST['grad'] ) && $_POST['grad'] == 0 ) ? 'checked' : '' ?>>
-						Graduate
-					</label>
-				</div>
-				<button type="submit" name="submit" class="btn btn-primary">Submit</button>
-			</form>
+			<div class="col">
+				<form method="post" name="form" class="form-inline">
+					<div class="form-group m-2">
+						<select name="semester" id="semester" class="form-control">
+							<?php for ( $i = 0; $i < count( $semester_arr ); $i++ ) : ?>
+								<option value="<?= $semester_arr[ $i ]->SemesterSerial ?>" <?= ( isset( $_POST['semester'] ) && $_POST['semester'] == $semester_arr[ $i ]->SemesterSerial ) ? 'selected=true' : '' ?>>
+									<?= $semester_arr[ $i ]->SemesterTxt ?>
+								</option>
+							<?php endfor; ?>
+						</select>
+					</div>
+					<div class="form-check m-2">
+						<label class="form-check-label">
+							<input id="undergrad" class="form-check-input" type="checkbox" name="undergrad" value=1 <?= ( isset( $_POST['undergrad'] ) && $_POST['undergrad'] == 1 ) ? 'checked' : '' ?>>
+							Undergraduate
+						</label>
+					</div>
+					<div class="form-check m-2">
+						<label class="form-check-label">
+							<input id="grad" class="form-check-input" type="checkbox" name="grad" value=0 <?= ( isset( $_POST['grad'] ) && $_POST['grad'] == 0 ) ? 'checked' : '' ?>>
+							Graduate
+						</label>
+					</div>
+					<button type="submit" name="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
 			<div class="col-auto">
 				<hr class="hr-vertical">
 			</div>
