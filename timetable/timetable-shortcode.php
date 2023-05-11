@@ -6,7 +6,7 @@ function timetable_form_display() {
 	ob_start();
 	?>
 	<div class="container">
-		<div class="row align-items-center">
+		<div class="row">
 			<div class="col-8">
 				<form method="post" name="form" class="form-inline">
 					<div class="form-group m-2">
@@ -32,7 +32,10 @@ function timetable_form_display() {
 					</div>
 					<button type="submit" name="submit" class="btn btn-primary">Submit</button>
 				</form>
-				<a href="/courses/" class="btn btn-primary">Courses</a>
+				<a href="/courses/" class="btn btn-primary ml-2">Courses</a>
+			</div>
+			<div class="col-auto">
+				<hr class="hr-vertical">
 			</div>
 			<div class="col m-2">
 				<div class="row">
