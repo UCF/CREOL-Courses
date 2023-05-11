@@ -52,7 +52,7 @@ function timetable_form_display() {
 				<hr class="hr-vertical">
 			</div>
 			<div class="col">
-				<a href="/courses/" class="btn btn-primary">Courses</a>
+				<a href="/courses/" class="btn btn-primary m-2">Courses</a>
 			</div>
 		</div>
 	</div>
