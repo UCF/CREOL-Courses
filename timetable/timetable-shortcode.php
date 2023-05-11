@@ -32,7 +32,7 @@ function timetable_form_display() {
 			</div>
 		</form>
 		<div class="col-auto m-2">
-			<a href="/testing/courses/" class="btn btn-primary">Courses</a>
+			<a href="/courses/" class="btn btn-primary">Courses</a>
 		</div>
 		<div class="col-auto">
 			<hr class="hr-vertical">
@@ -52,49 +52,51 @@ function timetable_form_display() {
 			</div>
 		</div>
 	</div>
-	<?php
-	if ( isset( $_POST['semester'] ) && ( isset( $_POST['undergrad'] ) || isset( $_POST['grad'] ) ) ) {
-		// Determines what to set level to
-		if ( isset( $_POST['undergrad'] ) && ! isset( $_POST['grad'] ) ) {
-			$level = $_POST['undergrad'];
+	<div style="padding: 1% 5% 5% 5%">
+		<?php
+		if ( isset( $_POST['semester'] ) && ( isset( $_POST['undergrad'] ) || isset( $_POST['grad'] ) ) ) {
+			// Determines what to set level to
+			if ( isset( $_POST['undergrad'] ) && ! isset( $_POST['grad'] ) ) {
+				$level = $_POST['undergrad'];
+				?>
+				<script>
+					document.getElementById("undergrad").checked = true;
+				</script>
+				<?php
+			} else if ( ! isset( $_POST['undergrad'] ) && isset( $_POST['grad'] ) ) {
+				$level = $_POST['grad'];
+				?>
+					<script>
+						document.getElementById("grad").checked = true;
+					</script>
+				<?php
+			} else {
+				$level = 2;
+				?>
+					<script>
+						// Sets the form to the correct information.
+						document.getElementById("undergrad").checked = true;
+						document.getElementById("grad").checked = true;
+					</script>
+				<?php
+			}
+
+			if ( has_filter( 'timetable_display' ) ) {
+				echo apply_filters( 'timetable_display', $_POST['semester'], $level );
+			}
+		} else {
 			?>
 			<script>
+				// Sets the form to the correct information.
+				document.getElementById("semester").selectedIndex = 0;
 				document.getElementById("undergrad").checked = true;
+				document.getElementById("grad").checked = true;
 			</script>
 			<?php
-		} else if ( ! isset( $_POST['undergrad'] ) && isset( $_POST['grad'] ) ) {
-			$level = $_POST['grad'];
-			?>
-				<script>
-					document.getElementById("grad").checked = true;
-				</script>
-			<?php
-		} else {
-			$level = 2;
-			?>
-				<script>
-					// Sets the form to the correct information.
-					document.getElementById("undergrad").checked = true;
-					document.getElementById("grad").checked = true;
-				</script>
-			<?php
+			echo apply_filters( 'timetable_display', semester_serial(), 2 );
 		}
-
-		if ( has_filter( 'timetable_display' ) ) {
-			echo apply_filters( 'timetable_display', $_POST['semester'], $level );
-		}
-	} else {
 		?>
-		<script>
-			// Sets the form to the correct information.
-			document.getElementById("semester").selectedIndex = 0;
-			document.getElementById("undergrad").checked = true;
-			document.getElementById("grad").checked = true;
-		</script>
-		<?php
-		echo apply_filters( 'timetable_display', semester_serial(), 2 );
-	}
-	?>
+	</div>
 	<?php
 	return ob_get_clean();
 }
