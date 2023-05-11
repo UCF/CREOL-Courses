@@ -6,8 +6,8 @@ function timetable_form_display() {
 	ob_start();
 	?>
 	<div class="container">
-		<div class="row align-items-center no-gutters">
-			<div class="col-4">
+		<div class="row align-items-center">
+			<div class="col-8">
 				<form method="post" name="form" class="form-inline">
 					<div class="form-group m-2">
 						<select name="semester" id="semester" class="form-control">
@@ -32,6 +32,7 @@ function timetable_form_display() {
 					</div>
 					<button type="submit" name="submit" class="btn btn-primary">Submit</button>
 				</form>
+				<a href="/courses/" class="btn btn-primary">Courses</a>
 			</div>
 			<div class="col m-2">
 				<div class="row">
@@ -46,9 +47,6 @@ function timetable_form_display() {
 					<div class="col" style="background-color: #D0FFD0;">A214</div>
 					<div class="col" style="background-color: #99DD99;">Online</div>
 				</div>
-			</div>
-			<div class="col">
-				<a href="/courses/" class="btn btn-primary">Courses</a>
 			</div>
 		</div>
 	</div>
