@@ -6,7 +6,7 @@ function timetable_form_display() {
 	ob_start();
 	?>
 	<div class="container">
-		<div class="row align-items-center">
+		<div class="row align-items-center no-gutters">
 			<div class="col-4">
 				<form method="post" name="form" class="form-inline">
 					<div class="form-group m-2">
