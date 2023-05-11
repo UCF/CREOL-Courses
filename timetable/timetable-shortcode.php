@@ -48,6 +48,9 @@ function timetable_form_display() {
 					<div class="col" style="background-color: #99DD99;">Online</div>
 				</div>
 			</div>
+			<div class="col">
+				<a href="/courses/" class="btn btb-primary">Courses</a>
+			</div>
 		</div>
 	</div>
 	<div style="padding: 1% 5% 5% 5%">
