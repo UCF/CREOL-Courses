@@ -33,7 +33,7 @@ function timetable_form_display() {
 				</div>
 			</form>
 			<div class="col-auto m-2">
-				<a href="/courses/" class="btn btn-primary">Courses</a>
+				<a href="/courses/" class="btn btn-primary">List View</a>
 			</div>
 			<div class="col-auto">
 				<hr class="hr-vertical">
