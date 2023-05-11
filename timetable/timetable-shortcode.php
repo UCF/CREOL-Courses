@@ -6,7 +6,7 @@ function timetable_form_display() {
 	ob_start();
 	?>
 	<div class="container">
-		<div class="row">
+		<div class="row align-items-center">
 			<form method="post" name="form" class="form-inline">
 				<div class="form-group m-2">
 					<select name="semester" id="semester" class="form-control">
@@ -52,7 +52,7 @@ function timetable_form_display() {
 				<hr class="hr-vertical">
 			</div>
 			<div class="col">
-				<a href="/courses/" class="btn btn-primary m-2">Courses</a>
+				<a href="/courses/" class="btn btn-primary">Courses</a>
 			</div>
 		</div>
 	</div>
