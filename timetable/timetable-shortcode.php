@@ -69,6 +69,12 @@ function timetable_display( $semester, $level ) {
 	$timetable = new Timetable( $url );
 	$timetable->create_timetable();
 
-	$timetable->table_header();
-	$timetable->display();
+	?>
+	<div style="padding: 1% 5% 5% 5%">
+		<?php
+		$timetable->table_header();
+		$timetable->display();
+		?>
+	</div>
+	<?php
 }
