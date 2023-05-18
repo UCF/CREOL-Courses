@@ -58,7 +58,6 @@ function courses_form_display() {
 					</div>
 					<br>
 				</form>
-				<br>
 				<a class="btn btn-primary" href="https://creolcmsdev.smca.ucf.edu/timetable/" target="_blank">
 					Timetable View
 				</a>

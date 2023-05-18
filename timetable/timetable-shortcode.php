@@ -46,7 +46,7 @@ function timetable_form_display() {
 			</div>
 		</div>
 	</div>
-	<div style="padding: 1% 5% 5% 5%">
+	<div>
 		<?php
 		if ( isset( $_GET['semester'] ) && isset( $_GET['level'] ) ) {
 			timetable_display( $_GET['semester'], $_GET['level'] );
