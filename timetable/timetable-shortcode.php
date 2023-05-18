@@ -7,30 +7,22 @@ function timetable_form_display() {
 	?>
 	<div class="container">
 		<div class="row">
-			<form method="post" name="form" id="timetableform" class="form-inline">
+			<form method="get" class="form-inline">
 				<div class="form-group m-2">
 					<select name="semester" id="semester" class="form-control" onchange="this.form.submit()">
 						<?php for ( $i = 0; $i < count( $semester_arr ); $i++ ) : ?>
-							<option value="<?= $semester_arr[ $i ]->SemesterSerial ?>" <?= ( isset( $_POST['semester'] ) && $_POST['semester'] == $semester_arr[ $i ]->SemesterSerial ) ? 'selected=true' : '' ?>>
+							<option value="<?= $semester_arr[ $i ]->SemesterSerial ?>">
 								<?= $semester_arr[ $i ]->SemesterTxt ?>
 							</option>
 						<?php endfor; ?>
 					</select>
-				</div>
-				<div class="form-check m-2">
-					<label class="form-check-label">
-						<input id="undergrad" class="form-check-input" type="checkbox" name="undergrad" value=1
-							onclick="this.form.submit()">
-						Undergraduate
-					</label>
-				</div>
-				<div class="form-check m-2">
-					<label class="form-check-label">
-						<input id="grad" class="form-check-input" type="checkbox" name="grad" value=0
-							onclick="this.form.submit()">
-						Graduate
-					</label>
-				</div>
+					<div class="form-group m-2">
+						<select name="level" id="level" class="form-control" onchange="this.form.submit()">
+							<option value="2">All</option>
+							<option value="1">Undergraduate</option>
+							<option value="0">Graduate</option>
+						</select>
+					</div>
 			</form>
 			<div class="col-auto m-2">
 				<a href="/courses/" class="btn btn-primary">List View</a>
@@ -56,46 +48,17 @@ function timetable_form_display() {
 	</div>
 	<div style="padding: 1% 5% 5% 5%">
 		<?php
-		if ( isset( $_POST['semester'] ) && ( isset( $_POST['undergrad'] ) || isset( $_POST['grad'] ) ) ) {
-			// Determines what to set level to
-			if ( isset( $_POST['undergrad'] ) && ! isset( $_POST['grad'] ) ) {
-				$level = $_POST['undergrad'];
-				?>
-				<script>
-					document.getElementById("undergrad").checked = true;
-				</script>
-				<?php
-			} else if ( ! isset( $_POST['undergrad'] ) && isset( $_POST['grad'] ) ) {
-				$level = $_POST['grad'];
-				?>
-					<script>
-						document.getElementById("grad").checked = true;
-					</script>
-				<?php
-			} else {
-				$level = 2;
-				?>
-					<script>
-						// Sets the form to the correct information.
-						document.getElementById("undergrad").checked = true;
-						document.getElementById("grad").checked = true;
-					</script>
-				<?php
-			}
-
-			if ( has_filter( 'timetable_display' ) ) {
-				echo apply_filters( 'timetable_display', $_POST['semester'], $level );
-			}
-		} else {
+		if ( isset( $_GET['semester'] ) && isset( $_GET['level'] ) ) {
+			timetable_display( $_GET['semester'], $_GET['level'] );
 			?>
 			<script>
-				// Sets the form to the correct information.
-				document.getElementById("semester").selectedIndex = 0;
-				document.getElementById("undergrad").checked = true;
-				document.getElementById("grad").checked = true;
+				const urlParams = new URLSearchParams(window.location.search);
+				document.getElementById("semester").value = urlParams.get("semester");
+				document.getElementById("level").value = urlParams.get("level");
 			</script>
 			<?php
-			echo apply_filters( 'timetable_display', semester_serial(), 2 );
+		} else {
+			timetable_display( semester_serial(), 2 );
 		}
 		?>
 	</div>
@@ -108,10 +71,6 @@ function timetable_display( $semester, $level ) {
 	$timetable = new Timetable( $url );
 	$timetable->create_timetable();
 
-	ob_start();
 	$timetable->table_header();
 	$timetable->display();
-
-	return ob_get_clean();
 }
-add_filter( 'timetable_display', 'timetable_display', 10, 2 );
