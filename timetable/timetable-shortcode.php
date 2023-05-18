@@ -46,23 +46,20 @@ function timetable_form_display() {
 			</div>
 		</div>
 	</div>
-	<div>
-		<?php
-		if ( isset( $_GET['semester'] ) && isset( $_GET['level'] ) ) {
-			timetable_display( $_GET['semester'], $_GET['level'] );
-			?>
-			<script>
-				const urlParams = new URLSearchParams(window.location.search);
-				document.getElementById("semester").value = urlParams.get("semester");
-				document.getElementById("level").value = urlParams.get("level");
-			</script>
-			<?php
-		} else {
-			timetable_display( semester_serial(), 2 );
-		}
-		?>
-	</div>
 	<?php
+	if ( isset( $_GET['semester'] ) && isset( $_GET['level'] ) ) {
+		timetable_display( $_GET['semester'], $_GET['level'] );
+		?>
+		<script>
+			const urlParams = new URLSearchParams(window.location.search);
+			document.getElementById("semester").value = urlParams.get("semester");
+			document.getElementById("level").value = urlParams.get("level");
+		</script>
+		<?php
+	} else {
+		timetable_display( semester_serial(), 2 );
+	}
+
 	return ob_get_clean();
 }
 
