@@ -46,20 +46,23 @@ function timetable_form_display() {
 			</div>
 		</div>
 	</div>
-	<?php
-	if ( isset( $_GET['semester'] ) && isset( $_GET['level'] ) ) {
-		timetable_display( $_GET['semester'], $_GET['level'] );
-		?>
-		<script>
-			const urlParams = new URLSearchParams(window.location.search);
-			document.getElementById("semester").value = urlParams.get("semester");
-			document.getElementById("level").value = urlParams.get("level");
-		</script>
+	<div style="padding: 1% 5% 5% 5%">
 		<?php
-	} else {
-		timetable_display( semester_serial(), 2 );
-	}
-
+		if ( isset( $_GET['semester'] ) && isset( $_GET['level'] ) ) {
+			echo timetable_display( $_GET['semester'], $_GET['level'] );
+			?>
+			<script>
+				const urlParams = new URLSearchParams(window.location.search);
+				document.getElementById("semester").value = urlParams.get("semester");
+				document.getElementById("level").value = urlParams.get("level");
+			</script>
+			<?php
+		} else {
+			echo timetable_display( semester_serial(), 2 );
+		}
+		?>
+	</div>
+	<?php
 	return ob_get_clean();
 }
 
@@ -68,6 +71,9 @@ function timetable_display( $semester, $level ) {
 	$timetable = new Timetable( $url );
 	$timetable->create_timetable();
 
+	ob_start();
 	$timetable->table_header();
 	$timetable->display();
+	return ob_get_clean();
 }
+add_filter( 'timetable_display', 'timetable_display', 10, 2 );
