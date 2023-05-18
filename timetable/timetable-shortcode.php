@@ -44,6 +44,7 @@ function timetable_form_display() {
 			</div>
 		</div>
 	</div>
+	</div>
 	<?php
 	ob_start();
 
