@@ -14,13 +14,14 @@ function timetable_form_display() {
 							</option>
 						<?php endfor; ?>
 					</select>
-					<div class="form-group m-2">
-						<select name="level" id="level" class="form-control" onchange="this.form.submit()">
-							<option value="2">All</option>
-							<option value="1">Undergraduate</option>
-							<option value="0">Graduate</option>
-						</select>
-					</div>
+				</div>
+				<div class="form-group m-2">
+					<select name="level" id="level" class="form-control" onchange="this.form.submit()">
+						<option value="2">All</option>
+						<option value="1">Undergraduate</option>
+						<option value="0">Graduate</option>
+					</select>
+				</div>
 			</form>
 		</div>
 		<div class="col-auto m-2">
