@@ -12,10 +12,10 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( ALL_SEMESTERS, 0 );
-define( ALL_INSTRUCTORS, -1 );
-define( ALL_COURSES, 0 );
-define( UNDERGRAD_GRAD, 2 );
+define( 'ALL_SEMESTERS', 0 );
+define( 'ALL_INSTRUCTORS', -1 );
+define( 'ALL_COURSES', 0 );
+define( 'UNDERGRAD_GRAD', 2 );
 
 require_once 'includes/courses-feed.php';
 require_once 'includes/courses-layout.php';
