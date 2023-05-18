@@ -58,7 +58,7 @@ function timetable_form_display() {
 		</script>
 		<?php
 	} else {
-		timetable_display( semester_serial(), 2 );
+		timetable_display( semester_serial(), UNDERGRAD_GRAD );
 	}
 
 	return ob_get_clean();
@@ -67,14 +67,10 @@ function timetable_form_display() {
 function timetable_display( $semester, $level ) {
 	$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/TimeTableInfo?Semester=' . $semester . '&Level=' . $level;
 	$timetable = new Timetable( $url );
-	$timetable->create_timetable();
 
 	?>
 	<div style="padding: 1% 5% 5% 5%">
-		<?php
-		$timetable->table_header();
-		$timetable->display();
-		?>
+		<?php $timetable->display(); ?>
 	</div>
 	<?php
 }

@@ -58,7 +58,7 @@ function courses_form_display() {
 					</div>
 					<br>
 				</form>
-				<a class="btn btn-primary" href="https://creolcmsdev.smca.ucf.edu/timetable/" target="_blank">
+				<a class="btn btn-primary" href="https://creolcmsdev.smca.ucf.edu/timetable/">
 					Timetable View
 				</a>
 			</div>
@@ -66,7 +66,7 @@ function courses_form_display() {
 			<div class="col mt-lg-0 mt-5">
 				<?php
 				if ( isset( $_GET['semester'] ) && isset( $_GET['instructor'] ) && isset( $_GET['course'] ) && isset( $_GET['level'] ) ) {
-					if ( $_GET['semester'] == 0 && $_GET['instructor'] == -1 && $_GET['course'] == 0 ) {
+					if ( $_GET['semester'] == ALL_SEMESTERS && $_GET['instructor'] == ALL_INSTRUCTORS && $_GET['course'] == ALL_COURSES ) {
 						echo 'Choose a semester, instructor, or course';
 					} else {
 						courses_display( $_GET['semester'], $_GET['instructor'], $_GET['course'], $_GET['level'] );
@@ -81,7 +81,7 @@ function courses_form_display() {
 						<?php
 					}
 				} else {
-					courses_display( semester_serial(), -1, 0, 2 );
+					courses_display( semester_serial(), ALL_INSTRUCTORS, ALL_COURSES, UNDERGRAD_GRAD );
 					?>
 					<script>
 						document.getElementById("semester").selectedIndex = 1;
@@ -106,7 +106,7 @@ function courses_display( $semester, $instructor, $course, $level ) {
 			<span class="h-5 font-weight-bold letter-spacing-1">
 				<?= $curr->Course . ' ' . $curr->Title ?>
 			</span><br>
-			<?= $semester == 0 ? ( $curr->Semester . ': ' ) : '' ?>
+			<?= $semester == ALL_SEMESTERS ? ( $curr->Semester . ': ' ) : '' ?>
 			<?= class_days( $curr->Mon, $curr->Tue, $curr->Wed, $curr->Thu, $curr->Fri ) . ' ' . $curr->StartTime . ' to ' . $curr->EndTime ?><br>
 			<?= 'Room: ' . $curr->Room ?><br>
 			| <a href="<?= instructor_url( $curr->FirstLastName ) ?>" target="_blank"><?= $curr->FirstLastName ?></a> |

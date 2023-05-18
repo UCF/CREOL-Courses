@@ -3,6 +3,12 @@
  * 
  */
 class TimeTable {
+	// constants
+	const NUM_CELLS_IN_HOUR = 4;
+	const VALUE_OF_CELL = 25;
+	const DAYS_IN_SCHOOL_WEEK = 5;
+	const SECONDS_IN_HOUR = 3600;
+
 	// properties
 	public $url;
 	private $table;
@@ -13,22 +19,28 @@ class TimeTable {
 	// constructor
 	function __construct( $url ) {
 		$this->url = $url;
-	}
 
-	// For testing purposes
-	public function get_table() {
 		$this->create_timetable();
-		print( "<pre>" . print_r( $this->table, true ) . "</pre>" );
 	}
 
+	/**
+	 * Returns row based on time.
+	 * @param mixed $time
+	 * @return float
+	 */
 	private static function get_row( $time ) {
 		$time = strtotime( $time );
 		$hour = idate( "H", $time );
 		$min = idate( "i", $time );
 
-		return ( $hour * 4 ) + ceil( $min / 15 );
+		return ( $hour * self::NUM_CELLS_IN_HOUR ) + ceil( $min / 15 );
 	}
 
+	/**
+	 * Returns day based on number where Monday is 1.
+	 * @param int $day
+	 * @return string
+	 */
 	private static function get_day( $day ) {
 		switch ( $day ) {
 			case 1:
@@ -51,7 +63,11 @@ class TimeTable {
 		return $day_name;
 	}
 
-	public function create_timetable() {
+	/**
+	 * 
+	 * @return void
+	 */
+	private function create_timetable() {
 		$col = $starting_col = 0;
 		$prev_day = 1; // Monday
 		$prev_total = 0;
@@ -65,19 +81,19 @@ class TimeTable {
 		foreach ( $courses as $course ) {
 			$day = $course->DOW;
 
+			// Stores previous values and resets.
 			if ( $day != $prev_day ) {
-				$curr_total_cols = count( $this->table );
-
-				$col = $starting_col = $curr_total_cols;
+				$col = $starting_col = $curr_total_cols = count( $this->table );
 				$this->num_cols[ $prev_day ] = $curr_total_cols - $prev_total;
 
-				$prev_total = count( $this->table );
+				$prev_total = $curr_total_cols;
 				$prev_day = $day;
 			}
 
 			$start_row = self::get_row( $course->StartTime ) - $this->start_time;
 			$end_row = self::get_row( $course->EndTime ) - $this->start_time;
 
+			// Moves to the next column if a collision happens
 			while ( isset( $this->table[ $col ][ $start_row ] ) ) {
 				$col++;
 			}
@@ -94,9 +110,15 @@ class TimeTable {
 			$col = $starting_col;
 		}
 
-		$this->num_cols[ $day ] = count( $this->table ) - $prev_total;
+		$this->num_cols[ $day ] = count( $this->table ) - $prev_total; // Setting the last days number of columns
 	}
 
+	/**
+	 * Returns hex for background color of course. Uses the room ID to determine color.
+	 * @param string $room
+	 * @param bool $is_webcourse
+	 * @return string
+	 */
 	private static function get_room_color( $room, $is_webcourse ) {
 		switch ( $room ) {
 			case 4:
@@ -127,14 +149,24 @@ class TimeTable {
 		return $color;
 	}
 
+	/**
+	 * Returns true if the row is on the hour.
+	 * @param int $row
+	 * @return bool
+	 */
 	private function is_hour( $row ) {
-		return ( $row + $this->start_time ) % 4 == 0;
+		return ( $row + $this->start_time ) % self::NUM_CELLS_IN_HOUR == 0;
 	}
 
+	/**
+	 * Outputs the time sidebar on the left.
+	 * @param int $row
+	 * @return void
+	 */
 	private function get_time( $row ) {
 		if ( $this->is_hour( $row ) ) {
-			$time = ( $row + $this->start_time ) * 25;
-			$time = substr( $time, 0, -2 ) * 3600; // date format handles time in seconds
+			$time = ( $row + $this->start_time ) * self::VALUE_OF_CELL;
+			$time = substr( $time, 0, -2 ) * self::SECONDS_IN_HOUR; // date format handles time in seconds
 			$time = date( 'g:i', $time );
 			?>
 			<th scope="row" class="font-size-sm border-left-0 border-bottom-0 border-right-0" style="width:2.5%">
@@ -151,13 +183,20 @@ class TimeTable {
 		}
 	}
 
-	public function table_header() {
+	/**
+	 * Displays courses as table.
+	 * @return void
+	 */
+	public function display() {
+		$total_rows = $this->end_time - $this->start_time;
+		$total_cols = count( $this->table );
 		?>
 		<table id="timetable" class="table table-sm table-bordered table-responsive">
+			<!-- Header -->
 			<thead>
 				<tr class="bg-primary">
 					<th></th>
-					<?php for ( $i = 1; $i <= 5; $i++ ) : ?>
+					<?php for ( $i = 1; $i <= self::DAYS_IN_SCHOOL_WEEK; $i++ ) : ?>
 						<?php if ( ! $this->num_cols[ $i ] < 1 ) : ?>
 							<th colspan="<?= $this->num_cols[ $i ] ?>" style="width:<?= 100 / count( $this->table ) ?>%;">
 								<?= self::get_day( $i ) ?>
@@ -166,14 +205,6 @@ class TimeTable {
 					<?php endfor; ?>
 				</tr>
 			</thead>
-			<?php
-	}
-
-
-	public function display() {
-		$total_rows = $this->end_time - $this->start_time;
-		$total_cols = count( $this->table );
-		?>
 			<tbody>
 				<?php
 				for ( $r = 0; $r < $total_rows; $r++ ) {
@@ -183,12 +214,13 @@ class TimeTable {
 						$this->get_time( $r ); // Time sidebar
 			
 						for ( $c = 0; $c < $total_cols; $c++ ) {
+							// Course
 							if ( isset( $this->table[ $c ][ $r ] ) ) {
 								$curr_cell = $this->table[ $c ][ $r ];
 								?>
 								<?php if ( gettype( $curr_cell ) == 'object' ) : ?>
 									<td rowspan="<?= $curr_cell->Rowspan ?>" class="line-height-1" style="font-size: 0.7rem; background-color: 
-						<?= self::get_room_color( $curr_cell->CREOLRoomID, $curr_cell->isWebCourse ) ?>;">
+											<?= self::get_room_color( $curr_cell->CREOLRoomID, $curr_cell->isWebCourse ) ?>;">
 										<span class="font-weight-bold">
 											<?= $curr_cell->Course . '<br>' . $curr_cell->Title ?>
 										</span>
@@ -203,6 +235,7 @@ class TimeTable {
 								<?php endif; ?>
 								<?php
 							} else {
+								// Styling for empty cells
 								if ( $this->is_hour( $r ) ) {
 									?>
 									<td class="border-left-0 border-bottom-0 border-right-0">&nbsp</td>
