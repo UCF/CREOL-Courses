@@ -149,6 +149,21 @@ class TimeTable {
 		return $color;
 	}
 
+	private function add_border( $col ) {
+		$adding_cols = array();
+		$prev_val = 0;
+
+		for ( $i = 1; $i <= self::DAYS_IN_SCHOOL_WEEK; $i++ ) {
+			$adding_cols[] = $this->num_cols[ $i ] + $prev_val;
+			$prev_val = $this->num_cols[ $i ];
+		}
+
+		if ( in_array( $col + 1, $adding_cols ) ) {
+			return 'border-left:1px solid black';
+		}
+		return '';
+	}
+
 	/**
 	 * Returns true if the row is on the hour.
 	 * @param int $row
@@ -220,7 +235,8 @@ class TimeTable {
 								?>
 								<?php if ( gettype( $curr_cell ) == 'object' ) : ?>
 									<td rowspan="<?= $curr_cell->Rowspan ?>" class="line-height-1" style="font-size: 0.7rem; background-color: 
-											<?= self::get_room_color( $curr_cell->CREOLRoomID, $curr_cell->isWebCourse ) ?>;">
+											<?= self::get_room_color( $curr_cell->CREOLRoomID, $curr_cell->isWebCourse ) ?>;
+											<?= $this->add_border( $c ) ?>;">
 										<span class="font-weight-bold">
 											<?= $curr_cell->Course . '<br>' . $curr_cell->Title ?>
 										</span>
@@ -238,11 +254,12 @@ class TimeTable {
 								// Styling for empty cells
 								if ( $this->is_hour( $r ) ) {
 									?>
-									<td class="border-left-0 border-bottom-0 border-right-0">&nbsp</td>
+									<td class="border-left-0 border-bottom-0 border-right-0"
+										style="border-top:1px solid black; <?= $this->add_border( $c ) ?>">&nbsp</td>
 									<?php
 								} else {
 									?>
-									<td class="border-0">&nbsp</td>
+									<td class="border-0" style="<?= $this->add_border( $c ) ?>">&nbsp</td>
 									<?php
 								}
 							}
