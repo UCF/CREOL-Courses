@@ -214,7 +214,8 @@ class TimeTable {
 					<th></th>
 					<?php for ( $i = 1; $i <= self::DAYS_IN_SCHOOL_WEEK; $i++ ) : ?>
 						<?php if ( ! $this->num_cols[ $i ] < 1 ) : ?>
-							<th colspan="<?= $this->num_cols[ $i ] ?>" style="width:<?= 100 / count( $this->table ) ?>%;">
+							<th colspan="<?= $this->num_cols[ $i ] ?>"
+								style="width:<?= 100 / count( $this->table ) ?>%;border-bottom:1px solid black;">
 								<?= self::get_day( $i ) ?>
 							</th>
 						<?php endif; ?>
