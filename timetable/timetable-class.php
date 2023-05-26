@@ -184,7 +184,8 @@ class TimeTable {
 			$time = substr( $time, 0, -2 ) * self::SECONDS_IN_HOUR; // date format handles time in seconds
 			$time = date( 'g:i', $time );
 			?>
-			<th scope="row" class="font-size-sm border-left-0 border-bottom-0 border-right-0" style="width:2.5%">
+			<th scope="row" class="font-size-sm border-left-0 border-bottom-0 border-right-0"
+				style="width:2.5%; border-top:1px solid black;">
 				<?= $time ?>
 			</th>
 			<?php
