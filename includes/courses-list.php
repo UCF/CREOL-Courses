@@ -7,6 +7,8 @@ function courses_list() {
 	$undergrad_arr = get_json( 'https://api.creol.ucf.edu/CoursesJson.asmx/UndergradCourses' );
 	$grad_arr = get_json( 'https://api.creol.ucf.edu/CoursesJson.asmx/GradCourses' );
 
+	echo var_dump( $undergrad_arr );
+
 	ob_start();
 	?>
 	<div style="padding: 5% 10% 5% 10%">
