@@ -45,7 +45,6 @@ function courses_list_display( $level ) {
 			<a href="https://creol.ucf.edu/academics/undergrad/mission-educational-objectives-abet/abet-prep/">ABET</a>
 			|
 			<?= $curr->isSyllabus ? ( '<a href="syllabus/?scheduleid=' . $curr->CourseScheduleID . '&course=' . $curr->Course . '">Syllabus</a> | ' ) : '' ?>
-			|
 		</div>
 		<?php
 	}
