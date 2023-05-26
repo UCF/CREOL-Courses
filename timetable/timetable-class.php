@@ -161,6 +161,7 @@ class TimeTable {
 		if ( in_array( $col + 1, $adding_cols ) ) {
 			return 'border-left:1px solid black';
 		}
+		echo var_dump( $adding_cols );
 		return '';
 	}
 
