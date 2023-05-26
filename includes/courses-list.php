@@ -14,7 +14,7 @@ function courses_list() {
 		<hr class=" hr-2 hr-black my-2">
 		<?php courses_list_display( UNDERGRAD ); ?>
 	</div>
-	<div style="padding: 5% 10% 5% 10%">
+	<div style="padding: 0% 10% 5% 10%">
 		<h2 id="grad" class="mb-0 auto-section" data-section-link-title="Graduate">Graduate Courses</h2>
 		<hr class=" hr-2 hr-black my-2">
 		<?php courses_list_display( GRAD ); ?>
