@@ -40,7 +40,9 @@ function courses_list_display( $level ) {
 			<?php endif; ?>
 			|
 			<?= $curr->isDetail ? ( '<a href="details/?courseid=' . $curr->CourseID . '">Details</a> | ' ) : '' ?>
-			<a href="https://creol.ucf.edu/academics/undergrad/mission-educational-objectives-abet/abet-prep/">ABET</a>
+			<a
+				href="course-schedule/?semester=<?= ALL_SEMESTERS ?>&instructor=<?= ALL_INSTRUCTORS ?>&course=<?= $curr->CourseID ?>&level=<?= $level ?>">Schedule</a>
+			|
 			<?= $curr->isABET ? ( '<a href="https://creol.ucf.edu/academics/undergrad/mission-educational-objectives-abet/abet-prep/">ABET</a> | ' ) : '' ?>
 			<?= $curr->isSyllabus ? ( '<a href="syllabus/?scheduleid=' . $curr->CourseScheduleID . '&course=' . $curr->Course . '">Syllabus</a> | ' ) : '|' ?>
 		</div>
