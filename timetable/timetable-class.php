@@ -191,6 +191,8 @@ class TimeTable {
 	public function display() {
 		$total_rows = $this->end_time - $this->start_time;
 		$total_cols = count( $this->table );
+		$prev_day = 'Mon';
+		$day = 1;
 		?>
 		<table id="timetable" class="table table-sm table-responsive">
 			<!-- Header -->
@@ -217,7 +219,7 @@ class TimeTable {
 			
 						for ( $c = 0; $c < $total_cols; $c++ ) {
 							// Course
-							if ( $c == $this->num_cols[1] - 1 ) {
+							if ( $c == $this->num_cols[ $day ] - 1 ) {
 								$border = 'border-right:1px solid black;';
 							} else {
 								$border = '';
@@ -225,6 +227,9 @@ class TimeTable {
 
 							if ( isset( $this->table[ $c ][ $r ] ) ) {
 								$curr_cell = $this->table[ $c ][ $r ];
+								if ( $curr_cell->DOW != $prev_day ) {
+									$day++;
+								}
 								?>
 								<?php if ( gettype( $curr_cell ) == 'object' ) : ?>
 									<td rowspan="<?= $curr_cell->Rowspan ?>" class="line-height-1" style="
