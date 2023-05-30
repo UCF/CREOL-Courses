@@ -59,6 +59,11 @@ function timetable_form_display() {
 		<?php
 	} else {
 		timetable_display( semester_serial(), UNDERGRAD_GRAD );
+		?>
+		<script>
+			document.getElementById("semester").value = <?= semester_serial() ?>;
+		</script>
+	<?php
 	}
 
 	return ob_get_clean();
