@@ -218,17 +218,19 @@ class TimeTable {
 						$this->get_time( $r ); // Time sidebar
 			
 						for ( $c = 0; $c < $total_cols; $c++ ) {
-							// Course
-							if ( $c == $this->num_cols[ $day ] - 1 ) {
+							$col = 0;
+							if ( $col == $this->num_cols[ $day ] - 1 ) {
 								$border = 'border-right:1px solid black;';
 							} else {
 								$border = '';
 							}
 
+							// Course
 							if ( isset( $this->table[ $c ][ $r ] ) ) {
 								$curr_cell = $this->table[ $c ][ $r ];
 								if ( $curr_cell->DOW != $prev_day ) {
 									$day++;
+									$col = 0;
 									$prev_day = $curr_cell->DOW;
 								}
 								?>
@@ -262,6 +264,7 @@ class TimeTable {
 									<?php
 								}
 							}
+							$col++;
 						}
 						?>
 					</tr>
