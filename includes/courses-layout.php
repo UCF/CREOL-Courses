@@ -84,7 +84,7 @@ function courses_form_display() {
 					courses_display( semester_serial(), ALL_INSTRUCTORS, ALL_COURSES, UNDERGRAD_GRAD );
 					?>
 					<script>
-						document.getElementById("semester").selectedIndex = 1;
+						document.getElementById("semester").value = <?= semester_serial() ?>;
 					</script>
 					<?php
 				}
