@@ -208,7 +208,7 @@ class TimeTable {
 		$total_rows = $this->end_time - $this->start_time;
 		$total_cols = count( $this->table );
 		?>
-		<table id="timetable" class="table table-sm table-bordered table-responsive">
+		<table id="timetable" class="table table-sm table-responsive">
 			<!-- Header -->
 			<thead>
 				<tr class="bg-primary">
