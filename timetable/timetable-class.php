@@ -194,7 +194,7 @@ class TimeTable {
 		?>
 		<table id="timetable" class="table table-sm table-responsive">
 			<!-- Header -->
-			<thead class="position-sticky-top">
+			<thead class="sticky-top">
 				<tr class="bg-primary">
 					<th style="border-bottom:1px solid black;"></th>
 					<?php for ( $i = 1; $i <= self::DAYS_IN_SCHOOL_WEEK; $i++ ) : ?>
