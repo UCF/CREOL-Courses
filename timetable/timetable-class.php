@@ -113,6 +113,18 @@ class TimeTable {
 		$this->num_cols[ $day ] = count( $this->table ) - $prev_total; // Setting the last days number of columns
 	}
 
+	private function get_cumulative_cols() {
+		$adding_cols = array();
+		$prev_total = 0;
+
+		for ( $i = 1; $i <= self::DAYS_IN_SCHOOL_WEEK; $i++ ) {
+			$adding_cols[] = ( $this->num_cols[ $i ] + $prev_total ) - 1;
+			$prev_total += $this->num_cols[ $i ];
+		}
+
+		return $adding_cols;
+	}
+
 	/**
 	 * Returns hex for background color of course. Uses the room ID to determine color.
 	 * @param string $room
@@ -191,8 +203,8 @@ class TimeTable {
 	public function display() {
 		$total_rows = $this->end_time - $this->start_time;
 		$total_cols = count( $this->table );
-		$prev_day = 'Mon';
-		$day = 1;
+
+		$border_cols = $this->get_cumulative_cols();
 		?>
 		<table id="timetable" class="table table-sm table-responsive">
 			<!-- Header -->
@@ -218,8 +230,7 @@ class TimeTable {
 						$this->get_time( $r ); // Time sidebar
 			
 						for ( $c = 0; $c < $total_cols; $c++ ) {
-							$col = 0;
-							if ( $col == $this->num_cols[ $day ] - 1 ) {
+							if ( in_array( $c, $border_cols ) ) {
 								$border = 'border-right:1px solid black;';
 							} else {
 								$border = '';
@@ -228,11 +239,6 @@ class TimeTable {
 							// Course
 							if ( isset( $this->table[ $c ][ $r ] ) ) {
 								$curr_cell = $this->table[ $c ][ $r ];
-								if ( $curr_cell->DOW != $prev_day ) {
-									$day++;
-									$col = 0;
-									$prev_day = $curr_cell->DOW;
-								}
 								?>
 								<?php if ( gettype( $curr_cell ) == 'object' ) : ?>
 									<td rowspan="<?= $curr_cell->Rowspan ?>" class="line-height-1" style="
@@ -264,7 +270,6 @@ class TimeTable {
 									<?php
 								}
 							}
-							$col++;
 						}
 						?>
 					</tr>
