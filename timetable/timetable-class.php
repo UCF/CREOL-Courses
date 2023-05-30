@@ -157,6 +157,7 @@ class TimeTable {
 			$adding_cols[] = $this->num_cols[ $i ] + $prev_val;
 			$prev_val += $this->num_cols[ $i ];
 		}
+		echo var_dump( $adding_cols );
 
 		if ( in_array( $col + 1, $adding_cols ) ) {
 			return 'border-left:1px solid black';
@@ -215,7 +216,7 @@ class TimeTable {
 					<?php for ( $i = 1; $i <= self::DAYS_IN_SCHOOL_WEEK; $i++ ) : ?>
 						<?php if ( ! $this->num_cols[ $i ] < 1 ) : ?>
 							<th colspan="<?= $this->num_cols[ $i ] ?>"
-								style="width:<?= 100 / count( $this->table ) ?>%;border-bottom:1px solid black;<?= $this->add_border( $i ) ?>">
+								style="width:<?= 100 / count( $this->table ) ?>%;border-bottom:1px solid black;">
 								<?= self::get_day( $i ) ?>
 							</th>
 						<?php endif; ?>
@@ -236,8 +237,9 @@ class TimeTable {
 								$curr_cell = $this->table[ $c ][ $r ];
 								?>
 								<?php if ( gettype( $curr_cell ) == 'object' ) : ?>
-									<td rowspan="<?= $curr_cell->Rowspan ?>" class="line-height-1" style="font-size: 0.7rem; background-color: 
-											<?= self::get_room_color( $curr_cell->CREOLRoomID, $curr_cell->isWebCourse ) ?>;
+									<td rowspan="<?= $curr_cell->Rowspan ?>" class="line-height-1" style="
+											font-size: 0.7rem; 
+											background-color: <?= self::get_room_color( $curr_cell->CREOLRoomID, $curr_cell->isWebCourse ) ?>;
 											<?= $this->is_hour( $r ) ? 'border-top:1px solid black;' : '' ?>
 											<?= $this->add_border( $c ) ?>">
 										<span class="font-weight-bold">
@@ -257,8 +259,7 @@ class TimeTable {
 								// Styling for empty cells
 								if ( $this->is_hour( $r ) ) {
 									?>
-									<td class="border-left-0 border-bottom-0 border-right-0"
-										style="border-top:1px solid black;<?= $this->add_border( $c ) ?>">&nbsp</td>
+									<td class="" style="border-top:1px solid black;<?= $this->add_border( $c ) ?>">&nbsp</td>
 									<?php
 								} else {
 									?>
