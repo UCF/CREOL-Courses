@@ -217,7 +217,7 @@ class TimeTable {
 			
 						for ( $c = 0; $c < $total_cols; $c++ ) {
 							// Course
-							if ( $c == $this->num_cols[1] ) {
+							if ( $c == $this->num_cols[1] - 1 ) {
 								$border = 'border-right:1px solid black;';
 							} else {
 								$border = '';
