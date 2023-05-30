@@ -229,6 +229,7 @@ class TimeTable {
 								$curr_cell = $this->table[ $c ][ $r ];
 								if ( $curr_cell->DOW != $prev_day ) {
 									$day++;
+									$prev_day = $curr_cell->DOW;
 								}
 								?>
 								<?php if ( gettype( $curr_cell ) == 'object' ) : ?>
