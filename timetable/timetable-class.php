@@ -217,6 +217,12 @@ class TimeTable {
 			
 						for ( $c = 0; $c < $total_cols; $c++ ) {
 							// Course
+							if ( $c == $this->num_cols[1] ) {
+								$border = 'border-right:1px solid black;';
+							} else {
+								$border = '';
+							}
+
 							if ( isset( $this->table[ $c ][ $r ] ) ) {
 								$curr_cell = $this->table[ $c ][ $r ];
 								?>
@@ -224,7 +230,7 @@ class TimeTable {
 									<td rowspan="<?= $curr_cell->Rowspan ?>" class="line-height-1" style="
 											font-size: 0.7rem; 
 											background-color: <?= self::get_room_color( $curr_cell->CREOLRoomID, $curr_cell->isWebCourse ) ?>;
-											<?= $this->is_hour( $r ) ? 'border-top:1px solid black;' : '' ?>">
+											<?= $this->is_hour( $r ) ? 'border-top:1px solid black;' : '' ?><?= $border ?>">
 										<span class="font-weight-bold">
 											<?= $curr_cell->Course . '<br>' . $curr_cell->Title ?>
 										</span>
@@ -242,11 +248,11 @@ class TimeTable {
 								// Styling for empty cells
 								if ( $this->is_hour( $r ) ) {
 									?>
-									<td style="border-top:1px solid black;">&nbsp</td>
+									<td style="border-top:1px solid black;<?= $border ?>">&nbsp</td>
 									<?php
 								} else {
 									?>
-									<td class="border-top-0">&nbsp</td>
+									<td class="border-top-0" style="<?= $border ?>">&nbsp</td>
 									<?php
 								}
 							}
