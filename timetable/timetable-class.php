@@ -259,7 +259,7 @@ class TimeTable {
 								// Styling for empty cells
 								if ( $this->is_hour( $r ) ) {
 									?>
-									<td style="border:1px 0px 0px 0px solid black;">&nbsp</td>
+									<td style="border-top:1px solid black;">&nbsp</td>
 									<?php
 								} else {
 									?>
