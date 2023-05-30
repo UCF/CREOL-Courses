@@ -262,7 +262,7 @@ class TimeTable {
 									<?php
 								} else {
 									?>
-									<td class="border-0" style="<?= $this->add_border( $c ) ?>">&nbsp</td>
+									<td class="" style="<?= $this->add_border( $c ) ?>">&nbsp</td>
 									<?php
 								}
 							}
