@@ -117,7 +117,7 @@ class TimeTable {
 		$adding_cols = array();
 		$prev_total = 0;
 
-		for ( $i = 1; $i <= self::DAYS_IN_SCHOOL_WEEK; $i++ ) {
+		for ( $i = 1; $i < self::DAYS_IN_SCHOOL_WEEK; $i++ ) {
 			$adding_cols[] = ( $this->num_cols[ $i ] + $prev_total ) - 1;
 			$prev_total += $this->num_cols[ $i ];
 		}
