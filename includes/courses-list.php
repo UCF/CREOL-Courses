@@ -9,19 +9,31 @@ function courses_list() {
 	<div style="padding: 5% 10% 5% 10%">
 		<h2 id="undergrad" class="mb-0 auto-section" data-section-link-title="Undergraduate">Undergraduate Courses</h2>
 		<hr class=" hr-2 hr-black my-2">
-		<?php courses_list_display( UNDERGRAD ); ?>
+		<?php courses_list_display( UNDERGRAD, 0 ); ?>
 	</div>
 	<div style="padding: 0% 10% 5% 10%">
-		<h2 id="grad" class="mb-0 auto-section" data-section-link-title="Graduate">Graduate Courses</h2>
+		<h2 id="grad-core" class="mb-0 auto-section" data-section-link-title="Core Graduate">Core Graduate Courses</h2>
 		<hr class=" hr-2 hr-primary my-2">
-		<?php courses_list_display( GRAD ); ?>
+		<?php courses_list_display( GRAD, 1 ); ?>
+	</div>
+	<div style="padding: 0% 10% 5% 10%">
+		<h2 id="grad-electives" class="mb-0 auto-section" data-section-link-title="Graduate Electives">Graduate Electives</h2>
+		<hr class=" hr-2 hr-primary my-2">
+		<?php courses_list_display( GRAD, 0 ); ?>
 	</div>
 	<?php
 	return ob_get_clean();
 }
 
-function courses_list_display( $level ) {
-	$url = ( $level == UNDERGRAD ) ? 'https://api.creol.ucf.edu/CoursesJson.asmx/UndergradCourses' : 'https://api.creol.ucf.edu/CoursesJson.asmx/GradCourses';
+function courses_list_display( $level, $core ) {
+	if ( $level == GRAD && $core = 1 ) {
+		$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/CoreGradCourses';
+	} elseif ( $level == GRAD && $core = 0 ) {
+		$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/NonCoreGradCourses';
+	} else {
+		$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/UndergradCourses';
+	}
+	// $url = ( $level == UNDERGRAD ) ? 'https://api.creol.ucf.edu/CoursesJson.asmx/UndergradCourses' : 'https://api.creol.ucf.edu/CoursesJson.asmx/GradCourses';
 	$courses = get_json( $url );
 
 	foreach ( $courses as $curr ) {
