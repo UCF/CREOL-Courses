@@ -35,12 +35,13 @@ function courses_list_display( $level, $core ) {
 	}
 	// $url = ( $level == UNDERGRAD ) ? 'https://api.creol.ucf.edu/CoursesJson.asmx/UndergradCourses' : 'https://api.creol.ucf.edu/CoursesJson.asmx/GradCourses';
 	$courses = get_json( $url );
+	// TESTING
 
 	foreach ( $courses as $curr ) {
 		?>
 		<div class="px-2 pb-3">
 			<span class="h-5 font-weight-bold letter-spacing-1">
-				<?= $curr->Course . ' ' . $curr->Title ?>
+				<?= $curr->Course . ' ' . $curr->Title ?> 
 			</span><br>
 			<?php if ( $curr->Description != null ) : ?>
 				<span>
