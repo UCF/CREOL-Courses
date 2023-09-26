@@ -26,9 +26,9 @@ function courses_list() {
 }
 
 function courses_list_display( $level, $core ) {
-	if ( $level == GRAD && $core = 1 ) {
+	if ( $level == GRAD && $core == 1 ) {
 		$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/CoreGradCourses';
-	} elseif ( $level == GRAD && $core = 0 ) {
+	} elseif ( $level == GRAD && $core == 0 ) {
 		$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/NonCoreGradCourses';
 	} else {
 		$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/UndergradCourses';
