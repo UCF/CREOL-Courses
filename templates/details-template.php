@@ -16,7 +16,7 @@ function details_page( $course_id ) {
 		</div>
 		<div class="row">
 			<div class="col">
-				<?= $details_arr[0]->Description ?>
+				<!-- <?= $details_arr[0]->Description ?> -->
 				<div class="mt-4 mb-5 pb-sm-4">
 					<?= $details_arr[0]->Details ?>
 				</div>
