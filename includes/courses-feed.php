@@ -6,7 +6,7 @@
 function get_json( $url ) {
 	$transient = 'courses_' . md5( $url );
 	$items = get_transient( $transient );
-	$expiration = 3600; // Seconds in an hour.
+	$expiration = 60; // Seconds in an hour.
 
 	if ( ! $items ) {
 		$request = wp_remote_get( $url );
