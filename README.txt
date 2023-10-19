@@ -61,4 +61,4 @@ Note that compiled, minified css and js {{edit this list if the plugin doesn't i
 
 == Contributing ==
 
-Want to submit a bug report or feature request?  Check out our [contributing guidelines](https://github.com/UCF/{{My-Project}}/blob/master/CONTRIBUTING.md) for more information.  We'd love to hear from you!
+Want to submit a bug report or feature request?  Check out our [contributing guidelines](https://github.com/UCF/{{My-Project}}/blob/master/CONTRIBUTING.md) for more information.  We'd love to hear from you!  Have a nice day!
