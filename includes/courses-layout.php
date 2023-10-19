@@ -3,6 +3,7 @@
  * Handles the form and the output.
  **/
 
+ // Handles the dropdown on the left.
 function courses_form_display() {
 	$semester_arr = get_json( 'https://api.creol.ucf.edu/CoursesJson.asmx/SemesterList' );
 	$instructor_arr = get_json( 'https://api.creol.ucf.edu/CoursesJson.asmx/InstructorList' );
@@ -71,6 +72,7 @@ function courses_form_display() {
 					} else {
 						courses_display( $_GET['semester'], $_GET['instructor'], $_GET['course'], $_GET['level'] );
 						?>
+						<!-- Setting the drop downs to match the selection -->
 						<script>
 							const urlParams = new URLSearchParams(window.location.search);
 							document.getElementById("semester").value = urlParams.get("semester");
