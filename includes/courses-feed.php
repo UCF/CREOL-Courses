@@ -37,8 +37,6 @@ function get_json( $url ) {
 		return false;
 	}
 
-	echo wp_remote_retrieve_body( $request );
-
 	$items = json_decode( wp_remote_retrieve_body( $request ) );
 
 	$items = array( $items->response )[0];
