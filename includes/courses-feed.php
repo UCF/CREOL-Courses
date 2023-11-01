@@ -27,7 +27,10 @@
 // }
 
 function get_json( $url ) {
-	$request = wp_remote_get( $url );
+	$args = array(
+		'timeout' => 60,	
+	);
+	$request = wp_remote_get( $url, $args );
 
 	if ( is_wp_error( $request ) ) {
 		echo $request->get_error_message();
