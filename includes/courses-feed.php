@@ -30,6 +30,7 @@ function get_json( $url ) {
 	$request = wp_remote_get( $url );
 
 	if ( is_wp_error( $request ) ) {
+		echo $request->get_error_message();
 		return false;
 	}
 
