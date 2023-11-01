@@ -9,6 +9,8 @@ function courses_form_display() {
 	$instructor_arr = get_json( 'https://api.creol.ucf.edu/CoursesJson.asmx/InstructorList' );
 	$course_arr = get_json( 'https://api.creol.ucf.edu/CoursesJson.asmx/CourseList' );
 
+	var_dump( $course_arr );
+
 	ob_start();
 	?>
 	<div class="container">
