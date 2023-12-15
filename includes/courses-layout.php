@@ -120,7 +120,7 @@ function courses_display( $semester, $instructor, $course, $level ) {
 			<?= 'Room: ' . $curr->Room ?><br>
 			| <a href="<?= instructor_url( $curr->FirstLastName ) ?>" target="_blank"><?= $curr->FirstLastName ?></a> |
 			<?= $curr->isDetail ? ( '<a href="details/?courseid=' . $curr->CourseID . '">Details</a> | ' ) : '' ?>
-			<?= $curr->isSyllabus ? ( '<a href="https://api.creol.ucf.edu/ViewSyllabus.aspx/?CourseScheduleID=' . $curr->CourseScheduleID . '">Syllabus</a> | ' ) : '' ?>
+			<?= $curr->isSyllabus ? ( '<a href="https://api.creol.ucf.edu/ViewSyllabus.aspx/?CourseScheduleID=' . $curr->CourseScheduleID . '" target="_blank">Syllabus</a> | ' ) : '' ?>
 			<?= $curr->isWebCourse ? '<a href="https://webcourses.ucf.edu" target="_blank">Distance Learning</a> | ' : '' ?>
 			<?= $curr->isWebSite ? '<a href="' . $curr->URL . '" target="_blank">Website</a> |' : '' ?><br>
 		</div>
