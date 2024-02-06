@@ -21,7 +21,7 @@ function courses_form_display() {
 				<form method="get" name="form">
 					<div class="form-group">
 						<label for="semester">Semester</label>
-						<select name="semester" id="semester" class="form-control" onchange="this.form.submit()">
+						<select name="semester" id="semester" class="form-control" onchange="handleSelectorChange()">
 							<option value=0>All</option>
 							<?php for ( $i = 0; $i < count( $semester_arr ); $i++ ) : ?>
 								<option value="<?= $semester_arr[ $i ]->SemesterSerial ?>">
@@ -32,7 +32,7 @@ function courses_form_display() {
 					</div>
 					<div class="form-group">
 						<label for="instructor">Instructor</label>
-						<select name="instructor" id="instructor" class="form-control" onchange="this.form.submit()">
+						<select name="instructor" id="instructor" class="form-control" onchange="handleSelectorChange()">
 							<option value=-1>All</option>
 							<?php for ( $i = 0; $i < count( $instructor_arr ); $i++ ) : ?>
 								<option value="<?= $instructor_arr[ $i ]->PeopleID ?>">
@@ -43,7 +43,7 @@ function courses_form_display() {
 					</div>
 					<div class="form-group">
 						<label for="course">Course</label>
-						<select name="course" id="course" class="form-control" onchange="this.form.submit()">
+						<select name="course" id="course" class="form-control" onchange="handleSelectorChange()">
 							<option value=0>All</option>
 							<?php for ( $i = 0; $i < count( $course_arr ); $i++ ) : ?>
 								<option value="<?= $course_arr[ $i ]->CourseID ?>">
@@ -54,7 +54,7 @@ function courses_form_display() {
 					</div>
 					<div class="form-group">
 						<label for="level">Level</label>
-						<select name="level" id="level" class="form-control" onchange="this.form.submit()">
+						<select name="level" id="level" class="form-control" onchange="handleSelectorChange()">
 							<option value="2">All</option>
 							<option value="1">Undergraduate</option>
 							<option value="0">Graduate</option>
@@ -62,6 +62,17 @@ function courses_form_display() {
 					</div>
 					<br>
 				</form>
+				<!-- Disable controls on input change -->
+				<script>
+					let form = document.getElementsByName("form")[0];
+					let elements = form.elements;
+					function handleSelectorChange() {
+						for (let i = 0, len = elements.length; i < len; ++i) {
+							elements[i].disabled = true;
+						}
+						form.submit()
+					}
+				</script>
 				<a class="btn btn-primary" href="/timetable/">
 					Timetable View
 				</a>
