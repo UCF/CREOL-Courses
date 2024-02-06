@@ -4,7 +4,7 @@ Plugin Name: Courses
 Plugin URI: https://github.com/UCF/CREOL-Courses/tree/dev
 Description: Retrieves course information from database and displays as a list.
 Author: Claire Daugherty
-Version: 1.0
+Version: 2.1
 Author URI: https://github.com/claire-md
 */
 
