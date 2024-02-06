@@ -68,9 +68,11 @@ function courses_form_display() {
 					let elements = form.elements;
 					function handleSelectorChange() {
 						for (let i = 0, len = elements.length; i < len; ++i) {
-							elements[i].disabled = true;
+							elements[i].style.pointerEvents = "none";
+							elements[i].onclick = () => false;
+							elements[i].onkeydown = () => false;
 						}
-						form.submit()
+						form.submit();
 					}
 				</script>
 				<a class="btn btn-primary" href="/timetable/">
