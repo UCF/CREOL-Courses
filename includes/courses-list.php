@@ -53,7 +53,7 @@ function courses_list_display( $level, $core ) {
 				href="course-schedule/?semester=<?= ALL_SEMESTERS ?>&instructor=<?= ALL_INSTRUCTORS ?>&course=<?= $curr->CourseID ?>&level=<?= $level ?>">Schedule</a>
 			|
 			<?= $curr->IsABET ? ( '<a href="https://creol.ucf.edu/academics/undergrad/mission-educational-objectives-abet/abet-prep/">ABET</a> | ' ) : '' ?>
-			<?= $curr->isSyllabus ? ( '<a href="syllabus/?scheduleid=' . $curr->CourseScheduleID . '&course=' . $curr->Course . '">Syllabus</a> | ' ) : '' ?>
+			<?= $curr->isSyllabus ? ( '<a href="https://api.creol.ucf.edu/ViewSyllabus.aspx/?CourseScheduleID=' . $curr->CourseScheduleID . '" target="_blank">Syllabus</a> | ' ) : '' ?>
 		</div>
 		<?php
 	}

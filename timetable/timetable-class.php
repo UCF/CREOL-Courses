@@ -72,6 +72,9 @@ class TimeTable {
 		$prev_day = 1; // Monday
 		$prev_total = 0;
 		$courses = get_json( $this->url );
+		if ( is_null( $courses ) ) {
+			return;
+		}
 
 		// Handles the start time and end time of the table
 		$this->start_time = self::get_row( end( $courses )->StartTime );

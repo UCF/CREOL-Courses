@@ -8,6 +8,9 @@ function courses_form_display() {
 	$semester_arr = get_json( 'https://api.creol.ucf.edu/CoursesJson.asmx/SemesterList' );
 	$instructor_arr = get_json( 'https://api.creol.ucf.edu/CoursesJson.asmx/InstructorList' );
 	$course_arr = get_json( 'https://api.creol.ucf.edu/CoursesJson.asmx/CourseList' );
+	if ( is_null( $semester_arr ) || is_null( $instructor_arr ) || is_null( $course_arr ) ) {
+		return false;
+	}
 
 	ob_start();
 	?>
@@ -18,7 +21,7 @@ function courses_form_display() {
 				<form method="get" name="form">
 					<div class="form-group">
 						<label for="semester">Semester</label>
-						<select name="semester" id="semester" class="form-control" onchange="this.form.submit()">
+						<select name="semester" id="semester" class="form-control" onchange="handleSelectorChange()">
 							<option value=0>All</option>
 							<?php for ( $i = 0; $i < count( $semester_arr ); $i++ ) : ?>
 								<option value="<?= $semester_arr[ $i ]->SemesterSerial ?>">
@@ -29,7 +32,7 @@ function courses_form_display() {
 					</div>
 					<div class="form-group">
 						<label for="instructor">Instructor</label>
-						<select name="instructor" id="instructor" class="form-control" onchange="this.form.submit()">
+						<select name="instructor" id="instructor" class="form-control" onchange="handleSelectorChange()">
 							<option value=-1>All</option>
 							<?php for ( $i = 0; $i < count( $instructor_arr ); $i++ ) : ?>
 								<option value="<?= $instructor_arr[ $i ]->PeopleID ?>">
@@ -40,7 +43,7 @@ function courses_form_display() {
 					</div>
 					<div class="form-group">
 						<label for="course">Course</label>
-						<select name="course" id="course" class="form-control" onchange="this.form.submit()">
+						<select name="course" id="course" class="form-control" onchange="handleSelectorChange()">
 							<option value=0>All</option>
 							<?php for ( $i = 0; $i < count( $course_arr ); $i++ ) : ?>
 								<option value="<?= $course_arr[ $i ]->CourseID ?>">
@@ -51,7 +54,7 @@ function courses_form_display() {
 					</div>
 					<div class="form-group">
 						<label for="level">Level</label>
-						<select name="level" id="level" class="form-control" onchange="this.form.submit()">
+						<select name="level" id="level" class="form-control" onchange="handleSelectorChange()">
 							<option value="2">All</option>
 							<option value="1">Undergraduate</option>
 							<option value="0">Graduate</option>
@@ -59,6 +62,22 @@ function courses_form_display() {
 					</div>
 					<br>
 				</form>
+				<!-- Disable controls on input change -->
+				<script>
+					let form = document.getElementsByName("form")[0];
+					let elements = form.elements;
+					function handleSelectorChange() {
+						for (let i = 0, len = elements.length; i < len; ++i) {
+							elements[i].style.pointerEvents = "none";
+							elements[i].onclick = () => false;
+							elements[i].onkeydown = () => false;
+							elements[i].style.backgroundColor = "#f0f0f0";
+			            	elements[i].style.color = "#6c757d";
+			            	elements[i].style.border = "1px solid #ced4da";
+						}
+						form.submit();
+					}
+				</script>
 				<a class="btn btn-primary" href="/timetable/">
 					Timetable View
 				</a>
@@ -102,6 +121,10 @@ function courses_display( $semester, $instructor, $course, $level ) {
 	$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/CourseInfo?Semester=' . $semester . '&Instructor=' . $instructor . '&CourseID=' . $course . '&Level=' . $level;
 	$course_info_arr = get_json( $url );
 
+	if ( is_null( $course_info_arr ) ) {
+		return false;
+	}
+
 	foreach ( $course_info_arr as $curr ) {
 		?>
 		<div class="px-2 pb-3">
@@ -113,7 +136,7 @@ function courses_display( $semester, $instructor, $course, $level ) {
 			<?= 'Room: ' . $curr->Room ?><br>
 			| <a href="<?= instructor_url( $curr->FirstLastName ) ?>" target="_blank"><?= $curr->FirstLastName ?></a> |
 			<?= $curr->isDetail ? ( '<a href="details/?courseid=' . $curr->CourseID . '">Details</a> | ' ) : '' ?>
-			<?= $curr->isSyllabus ? ( '<a href="syllabus/?scheduleid=' . $curr->CourseScheduleID . '&course=' . $curr->Course . '">Syllabus</a> | ' ) : '' ?>
+			<?= $curr->isSyllabus ? ( '<a href="https://api.creol.ucf.edu/ViewSyllabus.aspx/?CourseScheduleID=' . $curr->CourseScheduleID . '" target="_blank">Syllabus</a> | ' ) : '' ?>
 			<?= $curr->isWebCourse ? '<a href="https://webcourses.ucf.edu" target="_blank">Distance Learning</a> | ' : '' ?>
 			<?= $curr->isWebSite ? '<a href="' . $curr->URL . '" target="_blank">Website</a> |' : '' ?><br>
 		</div>
