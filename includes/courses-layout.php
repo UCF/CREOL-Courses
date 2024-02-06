@@ -71,6 +71,9 @@ function courses_form_display() {
 							elements[i].style.pointerEvents = "none";
 							elements[i].onclick = () => false;
 							elements[i].onkeydown = () => false;
+							elements[i].style.backgroundColor = "#f0f0f0";
+			            	elements[i].style.color = "#6c757d";
+			            	elements[i].style.border = "1px solid #ced4da";
 						}
 						form.submit();
 					}
