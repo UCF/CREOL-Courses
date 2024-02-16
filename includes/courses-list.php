@@ -48,7 +48,7 @@ function courses_list_display( $level, $core ) {
 				</span><br>
 			<?php endif; ?>
 			|
-			<?= $curr->isDetail ? ( '<a href="details/?courseid=' . $curr->CourseID . '">Details</a> | ' ) : '' ?>
+			<?= $curr->isDetail ? ( '<a href="/course-schedule/details/?courseid=' . $curr->CourseID . '">Details</a> | ' ) : '' ?>
 			<a
 				href="course-schedule/?semester=<?= ALL_SEMESTERS ?>&instructor=<?= ALL_INSTRUCTORS ?>&course=<?= $curr->CourseID ?>&level=<?= $level ?>">Schedule</a>
 			|
