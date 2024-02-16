@@ -7,16 +7,10 @@ function get_json( $url ) {
 	$transient = 'courses_' . md5( $url );
 	$items = get_transient( $transient );
 	$expiration = 3600; // Seconds in an hour.
-	$args = array(
-		'timeout' => 60,
-	);
 
 	if ( ! $items ) {
-		$request = wp_remote_get( $url, $args );
 
 		if ( is_wp_error( $request ) ) {
-			echo 'Please email UCFTeam-CREOL-IT@groups.ucf.edu with the url, error message, and screenshot.\n';
-			echo $request->get_error_message() . '\n';
 			return false;
 		}
 
@@ -24,9 +18,9 @@ function get_json( $url ) {
 		set_transient( $transient, $items, $expiration );
 	}
 
-	// $items = json_decode( wp_remote_retrieve_body( $request ) );
+	$items = json_decode( wp_remote_retrieve_body( $request ) );
 
-	$items = array( $items->response )[0];
+	//$items = array( $items->response )[0];
 
 	return $items;
 }
