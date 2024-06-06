@@ -12,7 +12,7 @@ function courses_list() {
 		<?php courses_list_display( UNDERGRAD, 0 ); ?>
 	</div>
 	<div style="padding: 0% 10% 5% 10%">
-		<h2 id="grad-core" class="mb-0 auto-section" data-section-link-title="Core Graduate">Core Graduate Courses</h2>
+		<h2 id="grad-core" class="mb-0 auto-section" data-section-link-title="Core Graduate">Core Graduate Courses</h2> <span class="p-3 mb-2 bg-secondary">required for Masters</span>
 		<hr class=" hr-2 hr-primary my-2">
 		<?php courses_list_display( GRAD, 1 ); ?>
 	</div>
@@ -38,7 +38,11 @@ function courses_list_display( $level, $core ) {
 
 	foreach ( $courses as $curr ) {
 		?>
-		<div class="px-2 pb-3">
+		<?php if ( $curr->IsMasters == True ) : ?>
+			<div class="px-2 pb-3 bg-secondary">
+		<?php else: ?>
+			<div class="px-2 pb-3">
+		<?php endif; ?>
 			<span class="h-5 font-weight-bold letter-spacing-1">
 				<?= $curr->Course . ' ' . $curr->Title ?> 
 			</span><br>
