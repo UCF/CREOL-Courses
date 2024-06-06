@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Courses
-Plugin URI: https://github.com/UCF/CREOL-Courses/tree/dev
+Plugin URI: https://github.com/UCF/CREOL-Courses/
 Description: Retrieves course information from database and displays as a list.
 Author: Claire Daugherty
 Version: 1.0
