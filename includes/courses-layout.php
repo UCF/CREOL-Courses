@@ -23,7 +23,7 @@ function courses_form_display() {
 			<div class="col-lg-3 col-12">
 				<form method="get" name="form">
 					<div class="form-group">
-						<label for="semester">Semester</label>
+						<label for="semester">SEMESTER</label>
 						<select name="semester" id="semester" class="form-control" onchange="handleSelectorChange()">
 							<option value=0>All</option>
 							<?php for ( $i = 0; $i < count( $semester_arr ); $i++ ) : ?>
