@@ -47,7 +47,7 @@ function courses_form_display() {
 					<div class="form-group">
 						<label for="course">Course</label>
 						<select name="course" id="course" class="form-control" onchange="handleSelectorChange()">
-							<option value=0>All</option>
+							<option value=-1>All</option>
 							<?php for ( $i = 0; $i < count( $course_arr ); $i++ ) : ?>
 								<option value="<?= $course_arr[ $i ]->CourseID ?>">
 									<?= $course_arr[ $i ]->FullCourseName ?>
