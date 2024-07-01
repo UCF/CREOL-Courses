@@ -14,7 +14,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 define( 'ALL_SEMESTERS', 0 );
 define( 'ALL_INSTRUCTORS', -1 );
-define( 'ALL_COURSES', 0 );
+define( 'ALL_COURSES', -1 );
 define( 'UNDERGRAD_GRAD', 2 );
 define( 'UNDERGRAD', 1 );
 define( 'GRAD', 0 );
