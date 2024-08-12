@@ -14,7 +14,7 @@ function courses_list() {
 	<div style="padding: 0% 10% 5% 10%">
 	<div class="d-flex justify-content-between align-items-end">
 		<h2 id="grad-core" class="mb-0" data-section-link-title="Core Graduate">Core Graduate Courses</h2>
-		<span class="p-2 mb-0 bg-faded">required for Masters</span>
+		<span class="p-2 mb-0 bg-faded">*required for Masters</span>
 	</div>
 		<hr class=" hr-2 hr-primary my-2">
 		<?php courses_list_display( GRAD, 1 ); ?>
@@ -43,12 +43,15 @@ function courses_list_display( $level, $core ) {
 		?>
 		<?php if ( $curr->IsMasters == True ) : ?>
 			<div class="px-2 pb-3 mb-1 bg-faded">
+			<span class="h-5 font-weight-bold letter-spacing-1">
+				<?= $curr->Course . ' ' . $curr->Title . '*' ?> 
+			</span><br>
 		<?php else: ?>
 			<div class="px-2 pb-3 mb-1">
-		<?php endif; ?>
 			<span class="h-5 font-weight-bold letter-spacing-1">
 				<?= $curr->Course . ' ' . $curr->Title ?> 
 			</span><br>
+		<?php endif; ?>
 			<?php if ( $curr->Description != null ) : ?>
 				<span>
 					<?= $curr->Description ?>
