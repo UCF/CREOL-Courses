@@ -3,30 +3,40 @@
  * Handles JSON feed.
  * Takes in a URL and returns an object.
  **/
-function get_json( $url ) {
-	$transient = 'courses_' . md5( $url );
-	$items = get_transient( $transient );
-	$expiration = 60; // Seconds in an hour.
-	$args = array(
-		'timeout' => 60,
-	);
+function get_json($url) {
+    $transient = 'courses_' . md5($url);
+    $items = get_transient($transient);
+    $expiration = 60 * 60; // Cache expiration in seconds (1 hour).
+    $args = array(
+        'timeout' => 60,
+    );
 
-	if ( ! $items ) {
-		$request = wp_remote_get( $url, $args );
+    if (!$items) {
+        // Fetch the data from the API
+        $request = wp_remote_get($url, $args);
 
-		if ( is_wp_error( $request ) ) {
-			echo 'Please email UCFTeam-CREOL-IT@groups.ucf.edu with the url, error message, and screenshot.\n';
-			echo $request->get_error_message() . '\n';
-			return false;
-		}
+        if (is_wp_error($request)) {
+            error_log('WP Error: ' . $request->get_error_message());
+            return null;
+        }
 
-		$items = json_decode( wp_remote_retrieve_body( $request ) );
-		set_transient( $transient, $items, $expiration );
-	}
+        // Get and decode the body of the response
+        $body = wp_remote_retrieve_body($request);
+        $items = json_decode($body);
 
-	// $items = json_decode( wp_remote_retrieve_body( $request ) );
+        // Log the raw body for debugging
+        error_log('API Response Body: ' . $body);
 
-	$items = array( $items->response )[0];
+        // Check for JSON errors
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            error_log('JSON Decode Error: ' . json_last_error_msg());
+            return null;
+        }
 
-	return $items;
+        // Cache the result
+        set_transient($transient, $items, $expiration);
+    }
+
+    // Return the cached or fetched items
+    return $items;
 }
