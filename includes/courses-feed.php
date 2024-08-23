@@ -5,7 +5,8 @@
  **/
 function get_json( $url ) {
 	$transient = 'courses_' . md5( $url );
-	$items = get_transient( $transient );
+	// $items = get_transient( $transient );
+	$items = false;
 	$expiration = 60; // Seconds in an hour.
 	$args = array(
 		'timeout' => 60,
@@ -28,9 +29,6 @@ function get_json( $url ) {
 	// $items = json_decode( wp_remote_retrieve_body( $request ) );
 
 	$items = array( $items->response )[0];
-	
-	// Data exists in cache, log it
-	error_log('Cache hit for URL: ' . $url);
-	error_log('Cached Data: ' . print_r($items, true));
+	error_log("ITEMS EXISTS: " . $items);
 	return $items;
 }
