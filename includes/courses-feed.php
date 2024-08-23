@@ -17,7 +17,7 @@ function get_json($url) {
 
         if (is_wp_error($request)) {
             error_log('WP Error: ' . $request->get_error_message());
-            return false;
+            return;
         }
 
         // Get and decode the body of the response
@@ -30,7 +30,7 @@ function get_json($url) {
         // Check for JSON errors
         if (json_last_error() !== JSON_ERROR_NONE) {
             error_log('JSON Decode Error: ' . json_last_error_msg());
-            return false;
+            return;
         }
 
         // Cache the result
