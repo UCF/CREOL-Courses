@@ -5,7 +5,8 @@
  **/
 function get_json( $url ) {
 	$transient = 'courses_' . md5( $url );
-	$items = get_transient( $transient );
+	// $items = get_transient( $transient );
+	$items = false;
 	// Do NOT set expiration to zero. This results in a cache that will never be updated.
 	$expiration = 60 * 60; // Seconds in an hour. So, one hour total.
 	$args = array(
