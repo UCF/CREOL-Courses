@@ -71,7 +71,7 @@ function timetable_form_display() {
 
 function timetable_display( $semester, $level ) {
 	$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/TimeTableInfo?Semester=' . $semester . '&Level=' . $level;
-	error_log('API URL: $url');
+	error_log('API URL: ' . $url);
 	$timetable = new Timetable( $url );
 
 	?>
