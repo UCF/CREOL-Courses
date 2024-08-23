@@ -5,8 +5,7 @@
  **/
 function get_json( $url ) {
 	$transient = 'courses_' . md5( $url );
-	// $items = get_transient( $transient );
-	$items = false;
+	$items = get_transient( $transient );
 	$expiration = 60; // Seconds in an hour.
 	$args = array(
 		'timeout' => 60,
