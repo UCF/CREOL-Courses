@@ -18,7 +18,9 @@ class TimeTable {
 
 	// constructor
 	function __construct( $url ) {
+		error_log("FED URL: " . $url);
 		$this->url = $url;
+		error_log("this->url: " . $this->url);
 
 		$this->create_timetable();
 	}
@@ -71,7 +73,9 @@ class TimeTable {
 		$col = $starting_col = 0;
 		$prev_day = 1; // Monday
 		$prev_total = 0;
+		error_log("Before JSON call: " . $this->url);
 		$courses = get_json( $this->url );
+		error_log("JSON COURSES: " . $courses);
 		if ( is_null( $courses ) ) {
 			return;
 		}
