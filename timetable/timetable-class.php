@@ -74,8 +74,12 @@ class TimeTable {
 		$prev_day = 1; // Monday
 		$prev_total = 0;
 		error_log("Before JSON call: " . $this->url);
-		$courses = get_json( $this->url );
-		error_log("JSON COURSES: " . $courses);
+		$courses = get_json($this->url);
+		if (is_array($courses) || is_object($courses)) {
+			error_log("Courses: " . print_r($courses, true));
+		} else {
+			error_log("Unexpected courses format: " . var_export($courses, true));
+		}
 		if ( is_null( $courses ) ) {
 			return;
 		}
