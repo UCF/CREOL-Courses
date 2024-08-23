@@ -12,6 +12,7 @@ function get_json( $url ) {
 	);
 
 	if ( ! $items ) {
+		error_log("Items DNE");
 		$request = wp_remote_get( $url, $args );
 
 		if ( is_wp_error( $request ) ) {
@@ -27,6 +28,6 @@ function get_json( $url ) {
 	// $items = json_decode( wp_remote_retrieve_body( $request ) );
 
 	$items = array( $items->response )[0];
-
+	error_log("ITEMS EXISTS: " . $items);
 	return $items;
 }
