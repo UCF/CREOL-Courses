@@ -75,46 +75,52 @@ class TimeTable {
 		if ( is_null( $courses ) ) {
 			return;
 		}
-
-		// Handles the start time and end time of the table
+	
+		// Debugging: Log API response
+		error_log("Courses: " . print_r($courses, true));
+	
 		$this->start_time = self::get_row( end( $courses )->StartTime );
 		$this->end_time = self::get_row( end( $courses )->EndTime );
 		array_pop( $courses );
-
+	
 		foreach ( $courses as $course ) {
 			$day = $course->DOW;
-
-			// Stores previous values and resets.
+	
 			if ( $day != $prev_day ) {
 				$col = $starting_col = $curr_total_cols = count( $this->table );
 				$this->num_cols[ $prev_day ] = $curr_total_cols - $prev_total;
-
+	
 				$prev_total = $curr_total_cols;
 				$prev_day = $day;
 			}
-
+	
 			$start_row = self::get_row( $course->StartTime ) - $this->start_time;
 			$end_row = self::get_row( $course->EndTime ) - $this->start_time;
-
-			// Moves to the next column if a collision happens
+	
+			// Debugging: Log course details
+			error_log("Course: " . print_r($course, true) . " Start Row: $start_row, End Row: $end_row");
+	
 			while ( isset( $this->table[ $col ][ $start_row ] ) ) {
 				$col++;
 			}
-
+	
 			$this->table[ $col ][ $start_row ] = $course;
-
+	
 			for ( $i = $start_row + 1; $i < $end_row; $i++ ) {
 				$this->table[ $col ][ $i ] = 1;
 			}
-
-			// Adding 'Rowspan' property
+	
 			$course->Rowspan = $end_row - $start_row;
-
+	
 			$col = $starting_col;
 		}
-
+	
 		$this->num_cols[ $day ] = count( $this->table ) - $prev_total; // Setting the last days number of columns
+	
+		// Debugging: Log final table setup
+		error_log("Final Table: " . print_r($this->table, true));
 	}
+	
 
 	private function get_cumulative_cols() {
 		$adding_cols = array();
