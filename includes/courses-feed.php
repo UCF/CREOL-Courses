@@ -5,8 +5,9 @@
  **/
 function get_json( $url ) {
 	$transient = 'courses_' . md5( $url );
-	// $items = get_transient( $transient );
-	$items = false;
+	$items = get_transient( $transient );
+	// Only set items to false if you need to force fetch fresh data
+	// $items = false;
 	// Do NOT set expiration to zero. This results in a cache that will never be updated.
 	$expiration = 60 * 60; // Seconds in an hour. So, one hour total.
 	$args = array(
@@ -26,8 +27,6 @@ function get_json( $url ) {
 		$items = json_decode( wp_remote_retrieve_body( $request ) );
 		set_transient( $transient, $items, $expiration );
 	}
-
-	// $items = json_decode( wp_remote_retrieve_body( $request ) );
 
 	$items = array( $items->response )[0];
 	error_log("ITEMS EXISTS: " . $items);
