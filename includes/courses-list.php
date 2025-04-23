@@ -3,6 +3,7 @@
  * Displays a list of all courses offered at CREOL sorted by Undergraduate, Core Graduate, and Graduate Elective courses.
  **/
 
+ // Styling the course headers
 function courses_list() {
 	ob_start();
 	?>
@@ -28,6 +29,7 @@ function courses_list() {
 	return ob_get_clean();
 }
 
+// Displaying and styling the list of courses
 function courses_list_display( $level, $core ) {
 	if ( $level == GRAD && $core == 1 ) {
 		$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/CoreGradCourses';

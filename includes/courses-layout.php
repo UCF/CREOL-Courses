@@ -1,6 +1,6 @@
 <?php
 /**
- * Handles the form and the output.
+ * Handles the form styling and the output.
  **/
 
  // Handles the dropdown on the left.
@@ -120,6 +120,7 @@ function courses_form_display() {
 	return ob_get_clean();
 }
 
+// Displays the courses 
 function courses_display( $semester, $instructor, $course, $level ) {
 	$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/CourseInfo?Semester=' . $semester . '&Instructor=' . $instructor . '&CourseID=' . $course . '&Level=' . $level;
 	$course_info_arr = get_json( $url );

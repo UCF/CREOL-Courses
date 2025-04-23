@@ -1,6 +1,7 @@
 <?php
 /*
 Template Name: Course Details Template
+Grabs info and styles the details page
 */
 function details_page( $course_id ) {
 	$details_url = 'https://api.creol.ucf.edu/CoursesJson.asmx/Details?CourseID=' . $course_id;

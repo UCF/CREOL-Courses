@@ -1,5 +1,9 @@
 <?php
 
+/*
+Displays the form and initializes the class
+*/
+
 function timetable_form_display() {
 	$semester_arr = get_json( 'https://api.creol.ucf.edu/CoursesJson.asmx/SemesterList' );
 	?>
@@ -48,6 +52,7 @@ function timetable_form_display() {
 	<?php
 	ob_start();
 
+	// Handles filter parameters 
 	if ( isset( $_GET['semester'] ) && isset( $_GET['level'] ) ) {
 		timetable_display( $_GET['semester'], $_GET['level'] );
 		?>
@@ -69,6 +74,8 @@ function timetable_form_display() {
 	return ob_get_clean();
 }
 
+// Parent function 
+// Initializes new Timetable object and dsiplays it
 function timetable_display( $semester, $level ) {
 	$url = 'https://api.creol.ucf.edu/CoursesJson.asmx/TimeTableInfo?Semester=' . $semester . '&Level=' . $level;
 	error_log('API URL: ' . $url);

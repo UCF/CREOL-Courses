@@ -1,6 +1,6 @@
 <?php
-/**
- * 
+/*
+ 
  */
 class TimeTable {
 	// constants
@@ -65,16 +65,20 @@ class TimeTable {
 		return $day_name;
 	}
 
-	/**
-	 * 
-	 * @return void
+	/*
+	 
+	
+	 @return void
 	 */
 	private function create_timetable() {
 		$col = $starting_col = 0;
 		$prev_day = 1; // Monday
 		$prev_total = 0;
 		error_log("Before JSON call: " . $this->url);
+
+		// Fetches the courses from the API
 		$courses = get_json($this->url);
+
 		if (is_array($courses) || is_object($courses)) {
 			error_log("Courses: " . print_r($courses, true));
 		} else {
@@ -87,10 +91,15 @@ class TimeTable {
 		// Debugging: Log API response
 		error_log("Courses: " . print_r($courses, true));
 	
+		// Calling functions that are built into the class
 		$this->start_time = self::get_row( end( $courses )->StartTime );
 		$this->end_time = self::get_row( end( $courses )->EndTime );
 		array_pop( $courses );
 	
+		// Loop through each course and group them by day of the week.
+		// When the day changes, calculate and store how many columns (courses) were added for the previous day.
+		// This helps build a schedule grid, keeping track of how many courses belong to each day
+		// and where each day's courses start in the table layout.
 		foreach ( $courses as $course ) {
 			$day = $course->DOW;
 	
@@ -130,6 +139,7 @@ class TimeTable {
 	}
 	
 
+	// Retrieves border columns 
 	private function get_cumulative_cols() {
 		$adding_cols = array();
 		$prev_total = 0;
@@ -148,6 +158,8 @@ class TimeTable {
 	 * @param bool $is_webcourse
 	 * @return string
 	 */
+	
+	 // TODO
 	private static function get_room_color( $room, $is_webcourse ) {
 		switch ( $room ) {
 			case 4:

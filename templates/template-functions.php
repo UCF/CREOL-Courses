@@ -1,4 +1,9 @@
 <?php
+/*
+Adds templates to the WordPress editing interface
+Applies the template styling to the appropriate pages
+
+*/
 function add_page_template( $templates ) {
 	$templates['details-template.php'] = __( 'Course Details Template', 'text-domain' );
 	$templates['syllabus-template.php'] = __( 'Course Syllabus Template', 'text-domain' );

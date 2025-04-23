@@ -12,6 +12,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+// Global variables
 define( 'ALL_SEMESTERS', 0 );
 define( 'ALL_INSTRUCTORS', -1 );
 define( 'ALL_COURSES', -1 );

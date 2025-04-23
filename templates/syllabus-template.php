@@ -1,6 +1,7 @@
 <?php
 /*
 Template Name: Course Syllabus Template
+Grabs info and styles the syllabus page
 */
 function syllabus_pdf( $schedule_id, $course ) {
 	$url = 'https://api.creol.ucf.edu/ViewSyllabus.aspx?CourseScheduleID=' . $schedule_id;
