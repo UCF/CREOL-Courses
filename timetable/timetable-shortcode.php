@@ -11,6 +11,7 @@ function timetable_form_display() {
 		<div class="row">
 			<form method="get" class="form-inline">
 				<div class="form-group m-2">
+					<label for="semester" class="form-label">Select Semester</label>
 					<select name="semester" id="semester" class="form-control" onchange="this.form.submit()">
 						<?php for ( $i = 0; $i < count( $semester_arr ); $i++ ) : ?>
 							<option value="<?= $semester_arr[ $i ]->SemesterSerial ?>">
@@ -20,6 +21,7 @@ function timetable_form_display() {
 					</select>
 				</div>
 				<div class="form-group m-2">
+					<label for="level" class="form-label">Select Level</label>
 					<select name="level" id="level" class="form-control" onchange="this.form.submit()">
 						<option value="2">All</option>
 						<option value="1">Undergraduate</option>
