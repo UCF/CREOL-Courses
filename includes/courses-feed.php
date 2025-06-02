@@ -29,6 +29,6 @@ function get_json( $url ) {
 	}
 
 	$items = array( $items->response )[0];
-	error_log("ITEMS EXISTS: " . $items);
+	error_log("ITEMS EXISTS: " . json_encode($items));
 	return $items;
 }
