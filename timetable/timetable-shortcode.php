@@ -20,7 +20,6 @@ function timetable_form_display() {
 					</select>
 				</div>
 				<div class="form-group m-2">
-					<label for="level" class="form-label">Select Level</label>
 					<select name="level" id="level" class="form-control" aria-label="Select Level" onchange="this.form.submit()">
 						<option value="2">All</option>
 						<option value="1">Undergraduate</option>
